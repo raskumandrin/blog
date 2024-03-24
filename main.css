@@ -123,6 +123,11 @@ a:hover {
     color: gray;
 }
 
+i.fa-instagram.href {
+    padding-right: 6px;
+}
+
+
 .poster hr {
     margin-top: 2rem;
     margin-bottom: 3rem;
