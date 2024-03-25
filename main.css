@@ -182,8 +182,6 @@ span[class^="flag-"] {
     background-position: left bottom;
 }
 
-iframe.instagram-media-rendered { min-width: 280px!important; }  /* for small screen devices */
-
 /* https://github.com/tkrotoff/famfamfam_flags */
 /* famfamfam_flag_icons / cat me.png | openssl base64 | tr -d '\n' | pbcopy */
 
