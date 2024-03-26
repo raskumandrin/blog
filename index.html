@@ -14,7 +14,7 @@ title: Раскумандрин • Бложек мизантропа
 
 {% include post-nav-date-tag.html p=post %}
 
-<p>{{ post.excerpt }}</p>
+<p>{{ post.excerpt | liquify }}</p>
 </div>
 {% endfor %}
 
