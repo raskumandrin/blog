@@ -18,7 +18,15 @@ permalink: en/post.url
     <li><a href="/en/{{ c2 }}" rel="category tag">{{ category.title }}</a></li>
 {% endif %}
 {% endfor %}
-
+    {% if c2 == "world" %}
+        <li>
+        {% for country in site.data.en.countries %}
+        {% if page.countries contains country.label %}
+            <a href="/en/{{ country.label }}"><span class="flag-{{ country.label }}"></span>{{ country.title }}</a>
+        {% endif %}
+        {% endfor %}
+        </li>
+    {% endif %}
 </ul>
 
 <h1>{{ page.title }}</h1>
