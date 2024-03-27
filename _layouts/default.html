@@ -30,39 +30,24 @@
 <title>{{ page.title }}</title>
 {% endif %}
 
-
 {% if page.og_description %}
 <meta name="description" content="{{ page.og_description }}" />
 {% endif %}
-{% if page.og_image %}
-<link rel="image_src" href="{{ page.og_image }}" />
-{% endif %}
+<link rel="image_src" href="{{ page.i }}og.jpg" />
 
-{% if page.og_title %}
-<meta property="og:title" content="{{ page.og_title }}">
-{% else %}
 <meta property="og:title" content="{{ page.title }}">
-{% endif %}
 <meta property="og:type" content="article">
-{% if page.og_image %}
-<meta property="og:image" content="{{ page.og_image }}">
-{% endif %}
+<meta property="og:image" content="{{ page.i }}og.jpg">
 {% if page.og_description %}
 <meta property="og:description" content="{{ page.og_description }}">
 {% endif %}
 
 <meta name="twitter:card" content="summary">
-{% if page.og_title %}
-<meta name="twitter:title" content="{{ page.og_title }}">
-{% else %}
-<meta property="og:title" content="{{ page.title }}">
-{% endif %}
+<meta name="twitter:title" content="{{ page.title }}">
 {% if page.og_description %}
 <meta name="twitter:description" content="{{ page.og_description }}">
 {% endif %}
-{% if page.og_image %}
-<meta name="twitter:image" content="{{ page.og_image }}">
-{% endif %}
+<meta name="twitter:image" content="{{ page.i }}og.jpg">
 
 <meta name="author" content="Stas Raskumandrin">
 <meta name="copyright" content="Stas Raskumandrin">
