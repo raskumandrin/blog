@@ -33,11 +33,15 @@
 {% if page.og_description %}
 <meta name="description" content="{{ page.og_description }}" />
 {% endif %}
+{% unless page.no_ogimage %}
 <link rel="image_src" href="{{ page.i }}og.jpg" />
+{% endunless %}
 
 <meta property="og:title" content="{{ page.title }}">
 <meta property="og:type" content="article">
+{% unless page.no_ogimage %}
 <meta property="og:image" content="{{ page.i }}og.jpg">
+{% endunless %}
 {% if page.og_description %}
 <meta property="og:description" content="{{ page.og_description }}">
 {% endif %}
@@ -47,7 +51,9 @@
 {% if page.og_description %}
 <meta name="twitter:description" content="{{ page.og_description }}">
 {% endif %}
+{% unless page.no_ogimage %}
 <meta name="twitter:image" content="{{ page.i }}og.jpg">
+{% endunless %}
 
 <meta name="author" content="Stas Raskumandrin">
 <meta name="copyright" content="Stas Raskumandrin">
