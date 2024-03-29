@@ -1,0 +1,15 @@
+[
+    {"label": "diy", "title": "D.I.Y."},
+    {"label": "gibdd", "title": "G.I.B.D.D."},
+    {"label": "javascript", "title": "JavaScript"},
+    {"label": "lenobl", "title": "Leningradskaya oblast"},
+    {"label": "lmarkings", "title": "Line markings"},
+    {"label": "maps", "title": "Maps"},
+    {"label": "mvd", "title": "MVD"},
+    {"label": "official", "title": "Official letters"},
+    {"label": "perl", "title": "Perl"},
+    {"label": "podorozhnik", "title": "Podorozhnik"},
+    {"label": "recipes", "title": "Recipes"},
+    {"label": "unix", "title": "Unix"},
+    {"label": "raif", "title": "Raiffeisen Bank"}
+]

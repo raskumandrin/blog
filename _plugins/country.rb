@@ -3,13 +3,13 @@ require 'json'
 module Jekyll
   class CountryGenerator < Generator
     def generate(site)
-#      generate_pages_from_json(site, 'countries.json', 'country')
-#      generate_pages_from_json(site, 'categories.json', 'category')
+      generate_pages_from_json(site, 'countries.json', 'country')
+      generate_pages_from_json(site, 'categories.json', 'category')
       generate_pages_from_json(site, 'tags.json', 'tag')
 
-#      generate_en_pages_from_json(site, 'countries.json', 'country')
-#      generate_en_pages_from_json(site, 'categories.json', 'category')
-#      generate_en_pages_from_json(site, 'tags.json', 'tag')
+      generate_en_pages_from_json(site, 'countries.json', 'country')
+      generate_en_pages_from_json(site, 'categories.json', 'category')
+      generate_en_pages_from_json(site, 'tags.json', 'tag')
     end
  
     def generate_pages_from_json(site, json_file, data_key)
