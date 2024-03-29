@@ -1,18 +1,10 @@
 ---
 url: sequence-diagram
 title: Sequence diagram as a code
-excerpt: |
-    <p><a href="/en/sequence-diagram"><img class="img-fluid" src="https://pub-3e57dc6805fe47c580cebfca6d4f2436.r2.dev/2024-03-23-sequence-diagram/tiser.png"></a></p>
-
-og_title: Sequence diagrams as code
-og_image: https://pub-3e57dc6805fe47c580cebfca6d4f2436.r2.dev/2024-03-23-sequence-diagram/og.png
 og_description: Sequence diagrams as code allow for tracking changes in the diagrams and controlling their versioning; moreover, based on existing code, it's easy to create subsequent diagrams.
 categories: work
-tags: []
 js: [fresco,highlight]
-
 ---
-
 <p>In the world of software development, particularly in multi-team projects, effective inter-team communication plays a crucial role in the project's success. One tool that can significantly facilitate this process is Sequence diagrams.</p>
 
 <h2>Why are Sequence diagrams needed in the first place?</h2>
@@ -23,9 +15,9 @@ js: [fresco,highlight]
 
 <p>At first, I used to draw such diagrams in draw.io. It was quite tedious overall.</p>
 
-<p><a class="fresco" href="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso_diagram.png"><img src="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso_diagram.th.png" class="img-fluid"></a></p>
+<p><a class="fresco" href="{{ page.i }}sso_diagram.png"><img src="{{ page.i }}sso_diagram.th.png" class="img-fluid"></a></p>
 
-<p><a href="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso_diagram.drawio">sso_diagram.drawio</a></p>
+<p><a href="{{ page.i }}sso_diagram.drawio">sso_diagram.drawio</a></p>
 
 <p>Then I discovered PlantUML. Writing the first diagram using text was also quite tedious, just like drawing in draw.io. But when it came to making changes and creating other similar diagrams, that's when the advantages of diagrams in the form of code, rather than drawings, became fully apparent.</p>
 <dl>
@@ -60,7 +52,7 @@ js: [fresco,highlight]
 
 <h2>Example diagram for Single Sign-On</h2>
 
-<p><a class="fresco" href="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso.png"><img src="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso.th.png" class="img-fluid"></a></p>
+<p><a class="fresco" href="{{ page.i }}sso.png"><img src="{{ page.i }}sso.th.png" class="img-fluid"></a></p>
 
 
 <pre><code>@startuml
