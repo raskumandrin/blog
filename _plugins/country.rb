@@ -1,21 +1,21 @@
-require 'csv'
+require 'json'
 
 module Jekyll
   class CountryGenerator < Generator
     def generate(site)
-      generate_pages_from_csv(site, 'countries.csv', 'country')
-      generate_pages_from_csv(site, 'categories.csv', 'category')
-      generate_pages_from_csv(site, 'tags.csv', 'tag')
+#      generate_pages_from_json(site, 'countries.json', 'country')
+#      generate_pages_from_json(site, 'categories.json', 'category')
+      generate_pages_from_json(site, 'tags.json', 'tag')
 
-      generate_en_pages_from_csv(site, 'countries.csv', 'country')
-      generate_en_pages_from_csv(site, 'categories.csv', 'category')
-      generate_en_pages_from_csv(site, 'tags.csv', 'tag')
+#      generate_en_pages_from_json(site, 'countries.json', 'country')
+#      generate_en_pages_from_json(site, 'categories.json', 'category')
+#      generate_en_pages_from_json(site, 'tags.json', 'tag')
     end
  
-    def generate_pages_from_csv(site, csv_file, data_key)
-      csv_data = CSV.read("_data/ru/#{csv_file}", headers: true)
+    def generate_pages_from_json(site, json_file, data_key)
+      json_data = JSON.parse(File.read("_data/ru/#{json_file}"))
 
-      csv_data.each do |row|
+      json_data.each do |row|
         label = row['label']
         
         new_page = Page.new(site, site.source, "", "#{label}.html")
@@ -27,10 +27,10 @@ module Jekyll
       end
     end
  
-    def generate_en_pages_from_csv(site, csv_file, data_key)
-      csv_data = CSV.read("_data/en/#{csv_file}", headers: true)
+    def generate_en_pages_from_json(site, json_file, data_key)
+      json_data = JSON.parse(File.read("_data/en/#{json_file}"))
 
-      csv_data.each do |row|
+      json_data.each do |row|
         label = row['label']
         
         new_page = Page.new(site, site.source, "", "en/#{label}.html")

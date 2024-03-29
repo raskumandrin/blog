@@ -1,0 +1,54 @@
+[
+  {
+    "label": "diy",
+    "title": "D.I.Y. «Сделай сам»"
+  },
+  {
+    "label": "gibdd",
+    "title": "ГИБДД"
+  },
+  {
+    "label": "javascript",
+    "title": "JavaScript"
+  },
+  {
+    "label": "lenobl",
+    "title": "Ленобласть"
+  },
+  {
+    "label": "lmarkings",
+    "title": "Разметка"
+  },
+  {
+    "label": "maps",
+    "title": "Карты"
+  },
+  {
+    "label": "mvd",
+    "title": "МВД"
+  },
+  {
+    "label": "perl",
+    "title": "Perl"
+  },
+  {
+    "label": "podorozhnik",
+    "title": "Подорожник"
+  },
+  {
+    "label": "recipes",
+    "title": "Рецепты"
+  },
+  {
+    "label": "unix",
+    "title": "Юникс"
+  },
+  {
+    "label": "untolovo",
+    "title": "Юнтолово"
+  },
+  {
+    "label": "raif",
+    "title": "Райффайзенбанк"
+  }
+]
