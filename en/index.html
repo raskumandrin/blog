@@ -14,7 +14,13 @@ title: Raskumandrin • Misanthrope's blog
 
 {% include post-nav-date-tag.html p=post %}
 
-<p>{{ post.excerpt }}</p>
+{% if post.og_description %}
+<p>{{ post.og_description }}</p>
+{% endif %}
+{% unless post.no_tiser %}
+<p><a href="{{ site.base-url }}{{ post.url }}"><img class="img-fluid" src="{{ post.i }}tiser.jpg"></a></p>
+{% endunless %}
+
 </div>
 {% endfor %}
 

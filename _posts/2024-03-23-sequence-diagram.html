@@ -1,18 +1,10 @@
 ---
 url: sequence-diagram
 title: Sequence диаграммы как код
-excerpt: |
-    <p><a href="/sequence-diagram"><img class="img-fluid" src="https://pub-3e57dc6805fe47c580cebfca6d4f2436.r2.dev/2024-03-23-sequence-diagram/tiser.png"></a></p>
-
-og_title: Sequence диаграммы как код
-og_image: https://pub-3e57dc6805fe47c580cebfca6d4f2436.r2.dev/2024-03-23-sequence-diagram/og.png
 og_description: Sequence диаграммы как код дают возможность отслеживать изменения в диаграммах и контролировать их версионность; кроме того, на основе существующего кода легко создавать последующие диаграммы
 categories: work
-tags: []
 js: [fresco,highlight]
-
 ---
-
 <p>В мире разработки программного обеспечения, особенно в условиях многокомандных проектов, эффективное межкомандное взаимодействие играет ключевую роль в успехе проекта. Одним из инструментов, который может значительно облегчить этот процесс, являются Sequence диаграммы.</p>
 <p>В русской википедии они именуются как <a href="https://ru.wikipedia.org/wiki/Диаграмма_последовательности">диаграммы последовательности</a>.</p>
 
@@ -24,9 +16,9 @@ js: [fresco,highlight]
 
 <p>Поначалу я рисовал такие диаграммы в draw.io. Это было в целом достаточно утомительно.</p>
 
-<p><a class="fresco" href="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso_diagram.png"><img src="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso_diagram.th.png" class="img-fluid"></a></p>
+<p><a class="fresco" href="{{ page.i }}sso_diagram.png"><img src="{{ page.i }}sso_diagram.th.png" class="img-fluid"></a></p>
 
-<p><a href="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso_diagram.drawio">sso_diagram.drawio</a></p>
+<p><a href="{{ page.i }}sso_diagram.drawio">sso_diagram.drawio</a></p>
 
 <p>Потом для меня открыли существование PlantUML. Написать первую диаграмму, используя текст, было тоже весьма утомительно, как и рисовать в draw.io. Но вот когда дело дошло до внесения изменений и когда потребовалось делать другие подобные диаграммы, тут-то в полной мере и раскрылись преимущства диаграмм в виде кода, а не рисунков.</p>
 
@@ -47,7 +39,7 @@ js: [fresco,highlight]
 <h2>PlantUML</h2>
 
 <p>Диаграмму можно начать кодировать/рисовать в браузере:</p>
-<p><a href="https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000">https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000</a></p>
+<p><a href="https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000">https://www.plantuml.com/plantuml/uml/SyfFKj...</a></p>
 
 <p>Если содержимое диаграммы являются уязвимым с точки зрения конфиденциальности, можно запустить PlantUML через Docker локально, и тот же самый интерфейс в браузере будет доступен локально и без доступа в интернет.</p>
 
@@ -62,7 +54,7 @@ js: [fresco,highlight]
 
 <h2>Пример диаграммы для Single Sign-On</h2>
 
-<p><a class="fresco" href="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso.png"><img src="{{ site.image-storage }}/2024-03-23-sequence-diagram/sso.th.png" class="img-fluid"></a></p>
+<p><a class="fresco" href="{{ page.i }}sso.png"><img src="{{ page.i }}sso.th.png" class="img-fluid"></a></p>
 
 
 <pre><code>@startuml
