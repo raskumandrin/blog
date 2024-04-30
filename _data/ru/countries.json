@@ -26,5 +26,6 @@
     {"label": "tr", "title": "Турция"},
     {"label": "ua", "title": "Украина"},
     {"label": "us", "title": "США"},
-    {"label": "va", "title": "Ватикан"}
+    {"label": "va", "title": "Ватикан"},
+    {"label": "uz", "title": "Узбекистан"}
 ]
