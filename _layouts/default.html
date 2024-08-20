@@ -58,6 +58,12 @@
 <meta name="author" content="Stas Raskumandrin">
 <meta name="copyright" content="Stas Raskumandrin">
 
+{% if page.lang == "ru" %}
+{% if page.url == "/" %}
+<meta name="yandex-verification" content="96ec53b69748b10b" />
+{% endif %}
+{% endif %}
+
 </head>
 <body>
 {% include navigation.html %}
