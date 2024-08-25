@@ -42,10 +42,9 @@ permalink: contents
 <tr>
   <th>Всё остальное</th>
   <th>Работа </th>
-  <th>Сербия </th>
   <th>Обращения</th>
-  <th>Странствия тут</th>
-  <th>Странствия там</th>
+  <th>Сербия после 2022 года<br>Россия до 2022 года</th>
+  <th>Мир</th>
 </tr>
 
 {% assign postsByYear =
@@ -74,16 +73,6 @@ permalink: contents
 </dl></td>
 
 <td><dl>
-    {% assign cat = year.items | reverse %}
-    {% for post in cat %}
-    {% if post.categories contains "srbija" and post.lang == "ru" %}
-        <dt>{% include date-no-year.html date=post.date %}</dt>
-        <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-    {% endif %}
-    {% endfor %}
-</dl></td>
-
-<td><dl>
 {% assign cat = year.items | reverse %}
 {% for post in cat %}
 {% if post.categories contains "official" and post.lang == "ru" %}
@@ -100,6 +89,12 @@ permalink: contents
     <dt>{% include date-no-year.html date=post.date %}</dt>
     <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
 {% endif %}
+
+{% if post.categories contains "srbija" and post.lang == "ru" %}
+    <dt>{% include date-no-year.html date=post.date %}</dt>
+    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
+{% endif %}
+
 {% endfor %}
 </dl></td>
 
