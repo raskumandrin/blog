@@ -31,18 +31,18 @@ js: [fresco,highlight]
 
 <p>В настройках VirtualBox выбираем «Сеть», «Виртуальные сети хоста», создаём новую: vboxnet1.</p>
 
-<p><img class="img-fluid" src="{{ page.i }}vboxnet-1.jpg"></p>
-<p><img class="img-fluid" src="{{ page.i }}vboxnet-2.jpg"></p>
-<p><img class="img-fluid" src="{{ page.i }}vboxnet-3.jpg"></p>
+<p><img src="{{ page.i }}vboxnet-1.jpg"></p>
+<p><img src="{{ page.i }}vboxnet-2.jpg"></p>
+<p><img src="{{ page.i }}vboxnet-3.jpg"></p>
 
 <p>В настройках новой созданной виртуальной машины прописываем такие параметры сети:</p>
 
-<p><img class="img-fluid" src="{{ page.i }}net1.jpg"></p>
-<p><img class="img-fluid" src="{{ page.i }}net2.jpg"></p>
+<p><img src="{{ page.i }}net1.jpg"></p>
+<p><img src="{{ page.i }}net2.jpg"></p>
 
 <p>Забираем образ Debian: <a href="https://www.debian.org/distrib/">debian.org/distrib</a>, подключаем его к виртуальной машине и устанавливаем минимальную версию.</p>
 
-<p><img class="img-fluid" src="{{ page.i }}deb-inst2.png"></p>
+<p><img src="{{ page.i }}deb-inst2.png"></p>
 
 <div class="row">
 
@@ -65,7 +65,7 @@ js: [fresco,highlight]
 
 <p>Прописываем IP-адрес 192.168.56.77 в файле /etc/network/interfaces.</p>
 
-<p><img class="img-fluid" src="{{ page.i }}00.png"></p>
+<p><img src="{{ page.i }}00.png"></p>
 
 <p>SSH-сервер уже был установлен (если нет, то <i># apt-get install openssh-server -y</i>) — теперь можно подключиться к машине через терминал десктопа и выполнить
 	уже остальную настройку программного окружения: <a href="https://bitbucket.org/raskumandrin/debian">bitbucket.org/raskumandrin/debian</a>.
