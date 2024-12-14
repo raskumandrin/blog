@@ -1,0 +1,269 @@
+---
+url: latex-cv
+title: Резюме в LaTeX
+og_description: Почему LaTeX может быть удобнее Word для создания резюме? Рассказываю о своём опыте перехода, преимуществах, Docker-решении для сборки, полезных шаблонах и делюсь своим примером.
+categories: work
+js: [fresco,highlight]
+---
+
+<h1>Предыстория</h1>
+<p>Резюме в Word — это стандарт для большинства. Моё резюме долгое время существовало в формате Word, где я:</p>
+<ul>
+	<li>редактировал содержание;</li>
+	<li>экспортировал в PDF для отправки;</li>
+	<li>хранил версию в Git для контроля изменений.</li>
+</ul>
+
+<p>Однако, со временем, я начал замечать ограничения Word, особенно в вопросах точного форматирования и работы с версионностью.</p>
+
+
+
+
+<h1>Преимущества LaTeX перед Word</h1>
+<p>Почему стоит попробовать LaTeX:</p>
+
+<dl>
+<dt>Контроль над форматированием</dt>
+<dd>В LaTeX вы точно задаёте, как должен выглядеть документ.</dd>
+<dt>Лёгкая работа с версиями</dt>
+<dd>Чистый текстовый формат легко сравнивать и отслеживать изменения через Git.<dd>
+<dt>Повторное использование кода</dt><dd>Одинаковые элементы, такие как контакты или шапка, можно редактировать в одном месте.</dd>
+<dt>Качество PDF</dt><dd>Полученный документ всегда выглядит профессионально.</dd>
+</dl>
+	
+<h1>Docker-файл для работы с LaTeX</h1>
+
+<p>Чтобы не устанавливать LaTeX локально, можно использовать Docker. Вот пример Docker-файла:</p>
+
+
+<pre><code>FROM debian:buster-slim
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y \
+        biber=2.12-2 \
+        latexmk=1:4.61-0.1 \
+        texlive-full=2018.20190227-2 && \
+        rm -rf /var/lib/apt/lists/*
+
+WORKDIR /tmp</code></pre>
+
+
+
+<p>Сборка образа:</p>
+
+<pre><code>docker build -t latex .</code></pre>
+
+
+<p>Сборка документа:</p>
+
+<pre><code>docker run -v `pwd`:/tmp latex pdflatex cv.tex</code></pre>
+
+<p>В результате в той же директории появится cv.pdf.</p>
+
+
+<p>Источник: <a href="https://www.joshfinnie.com/blog/latex-through-docker/">joshfinnie.com/blog/latex-through-docker</a>.</p>
+
+<h1>Полезные ресурсы</h1>
+<p>Для начала работы с резюме в LaTeX можно использовать готовые шаблоны. Один из лучших ресурсов:
+	<a href="https://www.overleaf.com/gallery/tagged/cv">Overleaf Templates</a></p>
+
+<p>Там можно найти множество примеров, которые легко адаптировать под свои нужды.</p>
+
+
+<h1>Мой шаблон резюме</h1>
+
+<p>Вот пример того, как выглядит моё резюме, созданное в LaTeX:</p>
+
+<div class="paper-sheet" style="padding:0"><img src="{{ page.i }}cv2.jpg"></div>
+
+<p>И его исходный код:</p>
+
+<pre><code>
+% !TeX spellcheck = en_GB
+% !TeX program = pdflatex
+
+\documentclass[11pt, a4paper]{article} 
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}  % hence this preparation
+\usepackage[british]{babel}  
+\usepackage[left = 0mm, right = 0mm, top = 0mm, bottom = 0mm]{geometry}
+\usepackage[stretch = 25, shrink = 25, tracking=true, letterspace=30]{microtype}  
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{FiraSans}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{cvblue}{HTML}{304263}
+\definecolor{parchment}{RGB}{220,217,208}
+
+\newcommand{\dates}[1]{\hfill\mbox{\textbf{#1}}} % Bold stuff that doesn’t got broken into lines
+\newcommand{\is}{\par\vskip.5ex plus .4ex} % Item spacing
+\newcommand{\smaller}[1]{{\small$\diamond$\ #1}}
+\newcommand{\headleft}[1]{\vspace*{3ex}\textsc{\textbf{#1}}\par%
+    \vspace*{-1.5ex}\hrulefill\par\vspace*{0.7ex}}
+\newcommand{\headright}[1]{\vspace*{2.5ex}\textsc{\Large\color{cvblue}#1}\par%
+     \vspace*{-2ex}{\color{cvblue}\hrulefill}\par}
+
+\usepackage[colorlinks = true, urlcolor = black, linkcolor = black]{hyperref}
+
+\begin{document}
+
+\setlength{\topskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\fboxsep}{0pt}
+\pagestyle{empty}
+\raggedbottom
+
+\begin{minipage}[t]{0.33\textwidth} %% Left column -- outer definition
+\colorbox{parchment}{\begin{minipage}[t][5mm][t]{\textwidth}\null\hfill\null\end{minipage}}
+
+\vspace{-.2ex} % Eliminates the small gap
+\colorbox{parchment}{\color{black}  %% LEFT BOX
+\kern0.09\textwidth\relax% Left margin provided explicitly
+\begin{minipage}[t][293mm][t]{0.82\textwidth}
+\raggedright
+\vspace*{2.5ex}
+
+\Large Stanislav \textbf{\textsc{Raskumandrin}} \normalsize 
+
+% Centering without extra vertical spacing
+\null\hfill\includegraphics[width=0.80\textwidth]{photo}\hfill\null
+
+\vspace*{3ex} % Extra space after the picture
+
+% https://ctan.org/pkg/fontawesome5
+% http://mirrors.ibiblio.org/CTAN/fonts/fontawesome5/doc/fontawesome5.pdf
+
+\noindent
+\begin{tabular}{@{}c@{\hspace{0.5em}}l@{}}
+\faEnvelope[regular] & \href{mailto:mail@gmail.com}{mail@gmail.com} \\[0.75ex]
+\faMobile* & \href{tel:+381123456789}{+381\,12\,345\,67\,89} \\[0.75ex]
+\faTelegramPlane & \href{https://t.me/telegram}{https://t.me/telegram}
+\end{tabular}
+
+\vspace*{0.75ex}
+
+\headleft{Objective}
+I have accrued 17 years of experience working with Perl and nearly 19 years of proficiency in SQL, both of which I
+have a genuine passion for. My expertise extends beyond coding as I actively engage with my team and consumers to
+create and maintain information systems. Additionally, I stay vigilant in monitoring emerging trends relevant to my
+field of expertise.
+
+% \faTag Perl \faTag SQL
+
+\headleft{Soft Skills}
+In my role as Team Lead for a team of five developers within an agile framework, I have excelled in time management,
+ensuring efficient project delivery and resource allocation. My strong conflict resolution and negotiation skills have
+facilitated smooth team dynamics and stakeholder communication, resulting in effective problem-solving and consensus
+building. Additionally, my meticulous documentation practices have contributed to enhanced project clarity and knowledge
+sharing, fostering a more organized and collaborative work environment.
+
+%\headleft{Skills}
+%\begin{itemize}
+%\item SQL, SSMS, Power BI,Power BI Service, DAX Functions,
+%Tableau, Python, PySpark
+%\item Panda, Numpy, Warehouse, Azure Databricks
+%\item Microsoft Excel, MS Word,MS PowerPoint
+%\item SQL Server, T-SQL, Kibana,Eclipse Birt,ETL
+%\item JavaScript, HTML, GitHub
+%\item Communication and team collaboration
+%\end{itemize} 
+
+\end{minipage}%
+\kern0.09\textwidth\relax%%Right margin provided explicitly to stretch the colourbox
+}
+\end{minipage}% Right column
+\hskip2.5em% Left margin for the white area
+\begin{minipage}[t]{0.56\textwidth}
+\setlength{\parskip}{0.8ex}% Adds spaces between paragraphs; use \\ to add new lines without this space. Shrink this amount to fit more data vertically
+
+\vspace{2ex}
+
+\headright{Experience}
+
+\textsc{\normalsize Limited company “Epam”}  \dates{2016--2024}
+
+\footnotesize Team Lead. External project: Health LRP application development and
+maintenance (Perl, Bash; Oracle; Solaris, Red Hat; AWS; Vim, tmux; SVN, Git; Chef, Jenkins). https://epam.com/
+
+\textsc{\normalsize Saint Petersburg State Company “Mineral”}  \dates{2014--2016}
+
+\footnotesize Development of tracking and analytical system for air pollution
+inspection, development of device drivers (Perl; Tiny Core Linux).
+
+\textsc{\normalsize Limited company “Torgovy Dom Severo-Zapadny”}  \dates{2015}
+
+\footnotesize Development of online–shop platform (Perl; MySQL; CentOS;
+Atlassian stack: JIRA, Confluence, Bitbucket, HipChat). http://www.220-volt.ru/
+
+\textsc{\normalsize Limited company “EuroLife”}  \dates{2014}
+
+\footnotesize  Development of order automation system for construction company (Perl, Mojolicious;
+MySQL; JavaScript; Bootstrap 3).
+
+https://raskumandrin.pages.dev/en/complicated-calculator
+
+\textsc{\normalsize Limited company “Inter”} \dates{2006--2016}
+
+\footnotesize  Design, development, and maintenance of online–shop platform. (Perl, Mojolicious;
+MySQL, PostgreSQL, SQLite; Debian, Apache, Nginx; Memcached; Sphinx; AWS). Implementation of sms-mail service,
+automation accounting of suppliers' warehouses, etc.
+
+\textsc{\normalsize Limited company “Solus”} \dates{2012}
+
+\footnotesize Websites development with company's perl–based CMS. http://solus.ru/web-cms.html
+
+\textsc{\normalsize Limited company “DeltaIncom”} \dates{2010--2011}
+
+\footnotesize Development of government registries extracts system (Perl, MySql). http://deltaincom.ru.
+
+\textsc{\normalsize Limited company} \dates{2008--2011}
+
+\footnotesize Development of online banking system. (Perl, MySql). Intranet.
+
+\textsc{\normalsize Closed joint-stock company “Medi”} \dates{2005--2011}
+
+\footnotesize Maintenance of corporate information system (MS SQL 6.5, 2000); BI
+reporting (Transact-SQL); programming user interface (Delphi 6).
+
+\textsc{\normalsize Limited company “Rad”, closed joint-stock company “Expoline” and non-profit charitable organization “Hesed”}  \dates{2002--2004}
+
+\footnotesize Developer (Delphi 6, Delphi 7, InterBase, MS Access, administration of a computer network).
+
+\headright{\normalsize Education}
+
+\textsc{Diploma Engineer Degree Programmes Applied mathematics} \dates{1999--2005}
+
+\footnotesize Saint Petersburg Electrotechnical University “LETI” (ETU). The Faculty of Computing Technologies and
+Informatics. https://etu.ru/en/university/ 
+
+\textsc{Accounting courses} \dates{2011}
+
+\textsc{Course of English language} \dates{1996--1998}
+
+
+\headright{\normalsize Certifications}
+
+\textsc{English Assessment. Speaking: B2, writing: B2} \dates{2023}
+
+\vspace*{4ex} % Extra space after the picture
+
+
+Public Git repository: \href{https://bitbucket.org/raskumandrin}{bitbucket.org/raskumandrin}
+
+Blog: \href{https://raskumandrin.pages.dev/en}{raskumandrin.pages.dev}
+
+LinkedIn: \href{https://www.linkedin.com/in/raskumas/}{linkedin.com/in/raskumas}
+
+\vspace*{4ex} % Extra space after the picture
+
+References available upon request.
+
+
+\end{minipage}
+
+\end{document}
+</code></pre>
