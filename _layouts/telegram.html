@@ -20,10 +20,17 @@ layout: default
       <div class="right-block">
         <!-- Right-aligned content -->
         <p class="mb-0">
-        	&larr; <a href="/telegram/{{ page.prev_date }}">{{ page.prev_date_text }}</a>
-			| <a href="/telegram"><i class="far fa-calendar-alt"></i></a>
 			
+			{% if page.prev_date %}
+			&larr; <a href="/telegram/{{ page.prev_date }}">{{ page.prev_date_text }}</a> |
+			{% endif %}
+        	
+			<a href="/telegram"><i class="far fa-calendar-alt"></i></a>
+			
+			{% if page.next_date %}
 			| <a href="/telegram/{{ page.next_date }}">{{ page.next_date_text }}</a> &rarr;
+			{% endif %}
+			
         </p>
       </div>
     </div>
