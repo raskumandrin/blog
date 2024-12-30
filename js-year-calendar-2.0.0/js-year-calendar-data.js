@@ -248,12 +248,12 @@ function customDayRenderer(element, currentDate) {
 document.addEventListener('DOMContentLoaded', () => {
 	const calendar21 = new Calendar('#calendar21', {
 		dataSource: events,
-		startDate:  new Date('2021-07-01'),
+		startDate:  new Date('2021-04-01'),
 	    language: 'ru',
 		displayHeader: false,
 		minDate: new Date('2020-12-31'),
 		maxDate: new Date('2020-12-31'),
-		numberMonthsDisplayed: 6,
+		numberMonthsDisplayed: 9,
 		customDayRenderer: customDayRenderer
 	});
 

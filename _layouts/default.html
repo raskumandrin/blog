@@ -23,6 +23,9 @@
 
 {% if page.pid contains "telegram" %}
 <link rel="stylesheet" type="text/css" href="/js-year-calendar-2.0.0/js-year-calendar.min.css" />
+<style>
+.js-calendar {	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 12px; font-weight: 400;}
+</style>
 {% endif %}
 
 {% if page.head %}
@@ -106,12 +109,6 @@
   hljs.configure({tabReplace: '    '}); // 4 spaces
   hljs.initHighlightingOnLoad();
 </script>
-{% endif %}
-
-{% if page.pid contains "telegram" %}
-<script src="/js-year-calendar-2.0.0/js-year-calendar.min.js"></script>
-<script src="/js-year-calendar-2.0.0/js-year-calendar.ru.js"></script>
-<script src="/js-year-calendar-2.0.0/js-year-calendar-data.js"></script>
 {% endif %}
 
 {% if page.url contains "patagonia-summits" %}
