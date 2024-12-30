@@ -238,7 +238,7 @@ function customDayRenderer(element, currentDate) {
     );
     if (event) {
         // Render the date as a clickable link
-        element.innerHTML = `<a href="${event.url}">${currentDate.getDate()}</a>`;
+        element.innerHTML = `<a href="/teleram/${event.url}">${currentDate.getDate()}</a>`;
         element.style.cursor = 'pointer';
         element.style.background = '#ffc107';
         element.style.color = 'black';
