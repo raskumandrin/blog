@@ -4,7 +4,19 @@ permalink: /:slug
 image-storage: "https://pub-3e57dc6805fe47c580cebfca6d4f2436.r2.dev"
 domain: "https://raskumandrin.pages.dev"
 
+
+collections:
+  telegram:
+    output: true
+
 defaults:
+  - scope:
+      path: ""
+      type: "telegram"
+    values:
+      layout: "telegram"
+      permaink: /:date
+
   # Default language
   -
     scope:
@@ -27,6 +39,11 @@ defaults:
     values:
       lang: "en"
       layout: "default"
+  - scope:
+      path: "/telegram"
+      type: "telegram"
+    values:
+      layout: "telegram"
   -
     scope:
       path: "" # an empty string here means all files in the project
@@ -44,5 +61,5 @@ defaults:
       layout: "post-en"
       base-url: "/en/"
       permalink: /en/:slug
-# Jekyll: Multilingual: https://kleinfreund.de/jekyll-multilingual/
 
+# Jekyll: Multilingual: https://kleinfreund.de/jekyll-multilingual/

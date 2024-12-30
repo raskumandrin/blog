@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<div class="row"><div class="col poster"> 
+
+<ul class="breadcrumbs">
+    <li><a href="/contents">Все записи</a></li>
+    <li><a href="/telegram" rel="category tag">Архив телеграм-канала</a></li>
+</ul>
+
+<div style="clear: both"></div>
+
+<div class="d-flex justify-content-between align-items-center py-2">
+      <div class="left-block">
+        <p class="mb-0">
+          <h1>{{ page.title }}</h1>
+     	</p>
+      </div>
+      <div class="right-block">
+        <!-- Right-aligned content -->
+        <p class="mb-0">
+        	&larr; <a href="/telegram/{{ page.prev_date }}">{{ page.prev_date_text }}</a>
+			| <a href="/telegram"><i class="far fa-calendar-alt"></i></a>
+			
+			| <a href="/telegram/{{ page.next_date }}">{{ page.next_date_text }}</a> &rarr;
+        </p>
+      </div>
+    </div>
+
+
+{{ content }}
+
+</div></div>
+
+{% include comments.html %}

@@ -16,9 +16,14 @@
       href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/solarized-light.min.css">
 {% endif %}
 
+
 <link rel="stylesheet" href="/main.css">
 <link rel="icon" type="image/png" href="/apple-touch-icon-16x16.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+
+{% if page.pid contains "telegram" %}
+<link rel="stylesheet" type="text/css" href="/js-year-calendar-2.0.0/js-year-calendar.min.css" />
+{% endif %}
 
 {% if page.head %}
     {% if page.lang == "ru" %}
@@ -101,6 +106,12 @@
   hljs.configure({tabReplace: '    '}); // 4 spaces
   hljs.initHighlightingOnLoad();
 </script>
+{% endif %}
+
+{% if page.pid contains "telegram" %}
+<script src="/js-year-calendar-2.0.0/js-year-calendar.min.js"></script>
+<script src="/js-year-calendar-2.0.0/js-year-calendar.ru.js"></script>
+<script src="/js-year-calendar-2.0.0/js-year-calendar-data.js"></script>
 {% endif %}
 
 {% if page.url contains "patagonia-summits" %}
