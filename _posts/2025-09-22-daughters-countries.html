@@ -1,0 +1,109 @@
+---
+url: daughters-countries
+title: Страны, где побывала дочь
+og_description: Собрал страны, где побывала дочь за свои восемь лет
+categories: things
+js: [fresco]
+visits:
+  - country: "Россия"
+    flag: "🇷🇺"
+    date: "2016-10"
+    photo: "ru"
+  - country: "Эстония"
+    flag: "🇪🇪"
+    date: "2017-07"
+    photo: "ee"
+  - country: "Таиланд"
+    flag: "🇹🇭"
+    date: "2018-01"
+    photo: "th"
+  - country: "Финляндия"
+    flag: "🇫🇮"
+    date: "2018-04"
+    photo: "fi"
+  - country: "Украина"
+    flag: "🇺🇦"
+    date: "2018-09"
+    photo: "ua"
+  - country: "Испания"
+    flag: "🇪🇸"
+    date: "2018-09"
+    photo: "es"
+  - country: "Беларусь"
+    flag: "🇧🇾"
+    date: "2019-06"
+    photo: "by"
+  - country: "Сербия"
+    flag: "🇷🇸"
+    date: "2022-05"
+    photo: "rs"
+  - country: "Черногория"
+    flag: "🇲🇪"
+    date: "2023-08"
+    photo: "me"
+  - country: "Узбекистан"
+    flag: "🇺🇿"
+    date: "2024-04"
+    photo: "uz"
+  - country: "Израиль"
+    flag: "🇮🇱"
+    date: "2024-06"
+    photo: "il"
+  - country: "Венгрия"
+    flag: "🇭🇺"
+    date: "2024-08"
+    photo: "hu"
+  - country: "Италия"
+    flag: "🇮🇹"
+    date: "2024-10"
+    photo: "it"
+  - country: "Португалия"
+    flag: "🇵🇹"
+    date: "2025-01"
+    photo: "pt"
+  - country: "Хорватия"
+    flag: "🇭🇷"
+    date: "2025-07"
+    photo: "hr"
+  - country: "Словения"
+    flag: "🇸🇮"
+    date: "2025-07"
+    photo: "si"
+  - country: "Швейцария"
+    flag: "🇨🇭"
+    date: "2025-09"
+    photo: "ch"
+---
+{% assign months = "01:Январь,02:Февраль,03:Март,04:Апрель,05:Май,06:Июнь,07:Июль,08:Август,09:Сентябрь,10:Октябрь,11:Ноябрь,12:Декабрь" | split: "," %}
+
+{% for v in page.visits %}
+
+ {% assign y = v.date | slice: 0,4 %}
+  {% assign m = v.date | slice: 5,2 %}
+  {% assign month_name = "" %}
+  {% for item in months %}
+    {% assign kv = item | split: ":" %}
+    {% if kv[0] == m %}
+      {% assign month_name = kv[1] %}
+    {% endif %}
+  {% endfor %}
+<div class="row align-items-start my-4">
+<div class="col-12 col-md-3 text-center">
+<span class="display-1 d-block">{{ v.flag }}</span>
+</div>
+
+<div class="col-12 col-md-9">
+<h5 class="mb-1">
+{{ v.country }}
+</h5>
+<p class="text-muted mb-2">
+{{ month_name }} {{ y }}
+</p>
+
+{% if v.photo and v.photo != "" %}
+<p><a class="fresco" data-fresco-group="i" href="{{ page.i }}{{ v.photo }}.jpg"><img src="{{ page.i }}{{ v.photo }}530.jpg" class="img-fluid rounded shadow-sm mb-2"></a></p>
+{% endif %}
+</div>
+</div>
+<hr>
+{% endfor %}
