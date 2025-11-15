@@ -6,30 +6,10 @@ categories: work
 js: [fresco,highlight]
 ---
 
-<h1>Предыстория</h1>
-<p>Резюме в Word — это стандарт для большинства. Моё резюме долгое время существовало в формате Word, где я:</p>
-<ul>
-	<li>редактировал содержание;</li>
-	<li>экспортировал в PDF для отправки;</li>
-	<li>хранил версию в Git для контроля изменений.</li>
-</ul>
-
-<p>Однако, со временем, я начал замечать ограничения Word, особенно в вопросах точного форматирования и работы с версионностью.</p>
-
-
-
-
-<h1>Преимущества LaTeX перед Word</h1>
-<p>Почему стоит попробовать LaTeX:</p>
-
-<dl>
-<dt>Контроль над форматированием</dt>
-<dd>В LaTeX вы точно задаёте, как должен выглядеть документ.</dd>
-<dt>Лёгкая работа с версиями</dt>
-<dd>Чистый текстовый формат легко сравнивать и отслеживать изменения через Git.<dd>
-<dt>Повторное использование кода</dt><dd>Одинаковые элементы, такие как контакты или шапка, можно редактировать в одном месте.</dd>
-<dt>Качество PDF</dt><dd>Полученный документ всегда выглядит профессионально.</dd>
-</dl>
+<p>Раньше резюме в Word’е было фактическим стандартом. Открываешь документ, правишь содержание, экспортируешь в PDF, отправляешь. Для контроля версий — отдельный Git-репозиторий, периодические коммиты. Формально система работает.</p>
+<p>Со временем проявляются ограничения. Форматирование контролируется слабо. В диффах трудно понять, что именно изменилось. Обновление контактных данных, продублированных в разных местах, превращается в лишнюю рутину.</p>
+<p>Постепенно я пришёл к другой схеме. Устанавливаю LaTeX (предпочтительно TeX Live). Резюме описываю в текстовом формате, без бинарных файлов. Использую любой удобный редактор. Вношу правку, компилирую — изменения в PDF видны сразу. Git фиксирует каждую деталь, поскольку исходники — обычный текст. Контакты и шапку выношу в переменные или команды: правлю в одном месте, обновление проходит по всему документу. Итоговый PDF стабилен, аккуратен и предсказуем — без плавающих таблиц и случайных смещений.</p>
+<p>Технически можно оставаться на Word’е и дальше экспортировать в PDF, но это часто оборачивается борьбой с форматированием и попытками выстроить точное позиционирование, что нередко приводит к трудноуловимым ошибкам в вёрстке.</p>
 	
 <h1>Docker-файл для работы с LaTeX</h1>
 
@@ -84,32 +64,44 @@ WORKDIR /tmp</code></pre>
 
 \documentclass[11pt, a4paper]{article} 
 
-\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}     % We are using pdfLaTeX,
 \usepackage[utf8]{inputenc}  % hence this preparation
 \usepackage[british]{babel}  
-\usepackage[left = 0mm, right = 0mm, top = 0mm, bottom = 0mm]{geometry}
+\usepackage[left = 0mm, right = 0mm, top = 8mm, bottom = -8mm]{geometry}
 \usepackage[stretch = 25, shrink = 25, tracking=true, letterspace=30]{microtype}  
-\usepackage{graphicx}
-\usepackage{xcolor}
+\usepackage{graphicx}        % To insert pictures
+\usepackage{xcolor}          % To add colour to the document
+\usepackage{marvosym}        % Provides icons for the contact details
 \usepackage{fontawesome5}
-\usepackage{FiraSans}
+%\usepackage{fontspec}
+%\setmainfont{Merriweather}
+\usepackage[us]{datetime}
+\renewcommand{\dateseparator}{, }
+
+\usepackage{enumitem}        % To redefine spacing in lists
+\setlist{parsep = 0pt, topsep = 0pt, partopsep = 1pt, itemsep = 1pt, leftmargin = 6mm}
+
+\usepackage{FiraSans}        % Change this to use any font, but keep it simple
 \renewcommand{\familydefault}{\sfdefault}
 
-\definecolor{cvblue}{HTML}{304263}
-\definecolor{parchment}{RGB}{220,217,208}
+%%%%%%% USER COMMAND DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These are the real workhorses of this template
 
-\newcommand{\dates}[1]{\hfill\mbox{\textbf{#1}}} % Bold stuff that doesn’t got broken into lines
+\newcommand{\dates}[1]{\hfill\mbox{\footnotesize\textbf{#1}}}
 \newcommand{\is}{\par\vskip.5ex plus .4ex} % Item spacing
 \newcommand{\smaller}[1]{{\small$\diamond$\ #1}}
 \newcommand{\headleft}[1]{\vspace*{3ex}\textsc{\textbf{#1}}\par%
     \vspace*{-1.5ex}\hrulefill\par\vspace*{0.7ex}}
-\newcommand{\headright}[1]{\vspace*{2.5ex}\textsc{\Large\color{cvblue}#1}\par%
-     \vspace*{-2ex}{\color{cvblue}\hrulefill}\par}
+\newcommand{\headright}[1]{\vspace*{2.5ex}\textsc{\Large#1}\par%
+     \vspace*{-2ex}{\hrulefill}\par}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[colorlinks = true, urlcolor = black, linkcolor = black]{hyperref}
 
 \begin{document}
+\vspace{1.5cm}
 
+% Style definitions -- killing the unnecessary space and adding the skips explicitly
 \setlength{\topskip}{0pt}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -117,20 +109,26 @@ WORKDIR /tmp</code></pre>
 \pagestyle{empty}
 \raggedbottom
 
+
+\hspace{0.5cm}
 \begin{minipage}[t]{0.33\textwidth} %% Left column -- outer definition
-\colorbox{parchment}{\begin{minipage}[t][5mm][t]{\textwidth}\null\hfill\null\end{minipage}}
+%  Left column -- top dark rectangle
+\colorbox{white}{\begin{minipage}[t][5mm][t]{\textwidth}\null\hfill\null\end{minipage}}
 
 \vspace{-.2ex} % Eliminates the small gap
-\colorbox{parchment}{\color{black}  %% LEFT BOX
+
+\colorbox{white}{\color{black}  %% LEFT BOX
 \kern0.09\textwidth\relax% Left margin provided explicitly
 \begin{minipage}[t][293mm][t]{0.82\textwidth}
 \raggedright
 \vspace*{2.5ex}
 
-\Large Stanislav \textbf{\textsc{Raskumandrin}} \normalsize 
+\Large Stanislav
+
+\textbf{\textsc{Raskumandrin}} \normalsize 
 
 % Centering without extra vertical spacing
-\null\hfill\includegraphics[width=0.80\textwidth]{photo}\hfill\null
+\null\hfill\includegraphics[width=0.80\textwidth]{gpt-avatar}\hfill\null
 
 \vspace*{3ex} % Extra space after the picture
 
@@ -139,7 +137,7 @@ WORKDIR /tmp</code></pre>
 
 \noindent
 \begin{tabular}{@{}c@{\hspace{0.5em}}l@{}}
-\faEnvelope[regular] & \href{mailto:mail@gmail.com}{mail@gmail.com} \\[0.75ex]
+\faEnvelope[regular] & \href{mailto:gmail@gmail.com}{gmail@gmail.com} \\[0.75ex]
 \faMobile* & \href{tel:+381123456789}{+381\,12\,345\,67\,89} \\[0.75ex]
 \faTelegramPlane & \href{https://t.me/telegram}{https://t.me/telegram}
 \end{tabular}
@@ -147,36 +145,22 @@ WORKDIR /tmp</code></pre>
 \vspace*{0.75ex}
 
 \headleft{Objective}
-I have accrued 17 years of experience working with Perl and nearly 19 years of proficiency in SQL, both of which I
-have a genuine passion for. My expertise extends beyond coding as I actively engage with my team and consumers to
-create and maintain information systems. Additionally, I stay vigilant in monitoring emerging trends relevant to my
-field of expertise.
+With 17 years in Perl and 19 in SQL, I build and maintain data systems that stay clear, stable, and practical.  
+I work closely with teams and users, keeping focus on real needs and reliable delivery.  
+Stay aware of new technologies that help make work faster and cleaner.
 
-% \faTag Perl \faTag SQL
+\headleft{LLM Use}
+I use Copilot, agents, and different LLMs in daily work — for coding, text, and data tasks.  
+Each tool supports precision and saves time, helping me keep focus on logic instead of routine.
 
 \headleft{Soft Skills}
-In my role as Team Lead for a team of five developers within an agile framework, I have excelled in time management,
-ensuring efficient project delivery and resource allocation. My strong conflict resolution and negotiation skills have
-facilitated smooth team dynamics and stakeholder communication, resulting in effective problem-solving and consensus
-building. Additionally, my meticulous documentation practices have contributed to enhanced project clarity and knowledge
-sharing, fostering a more organized and collaborative work environment.
-
-%\headleft{Skills}
-%\begin{itemize}
-%\item SQL, SSMS, Power BI,Power BI Service, DAX Functions,
-%Tableau, Python, PySpark
-%\item Panda, Numpy, Warehouse, Azure Databricks
-%\item Microsoft Excel, MS Word,MS PowerPoint
-%\item SQL Server, T-SQL, Kibana,Eclipse Birt,ETL
-%\item JavaScript, HTML, GitHub
-%\item Communication and team collaboration
-%\end{itemize} 
+As Team Lead for five developers in an agile environment, I excelled in time management, ensuring efficient project delivery. My conflict resolution and negotiation skills fostered smooth team dynamics and stakeholder communication, enabling effective problem-solving. Meticulous documentation also enhanced project clarity and collaboration.
 
 \end{minipage}%
 \kern0.09\textwidth\relax%%Right margin provided explicitly to stretch the colourbox
 }
 \end{minipage}% Right column
-\hskip2.5em% Left margin for the white area
+\hskip1.5em% Left margin for the white area
 \begin{minipage}[t]{0.56\textwidth}
 \setlength{\parskip}{0.8ex}% Adds spaces between paragraphs; use \\ to add new lines without this space. Shrink this amount to fit more data vertically
 
@@ -184,10 +168,12 @@ sharing, fostering a more organized and collaborative work environment.
 
 \headright{Experience}
 
-\textsc{\normalsize Limited company “Epam”}  \dates{2016--2024}
+
+\textsc{\normalsize Limited company “Epam”}  \dates{2016--2025}
 
 \footnotesize Team Lead. External project: Health LRP application development and
-maintenance (Perl, Bash; Oracle; Solaris, Red Hat; AWS; Vim, tmux; SVN, Git; Chef, Jenkins). https://epam.com/
+maintenance (Perl, Bash; SQL, Oracle, Redis; Solaris, Red Hat; AWS; Vim, tmux; SVN, Git;
+Chef, Jenkins, Docker; OpenTelemetry; Jira, Figma, Miro; SDLC, Scrum, SAFe, OWASP). https://epam.com/
 
 \textsc{\normalsize Saint Petersburg State Company “Mineral”}  \dates{2014--2016}
 
@@ -249,21 +235,25 @@ Informatics. https://etu.ru/en/university/
 
 \textsc{English Assessment. Speaking: B2, writing: B2} \dates{2023}
 
-\vspace*{4ex} % Extra space after the picture
 
+\headright{\normalsize Online Presence}
 
-Public Git repository: \href{https://bitbucket.org/raskumandrin}{bitbucket.org/raskumandrin}
-
-Blog: \href{https://raskumandrin.pages.dev/en}{raskumandrin.pages.dev}
-
-LinkedIn: \href{https://www.linkedin.com/in/raskumas/}{linkedin.com/in/raskumas}
-
-\vspace*{4ex} % Extra space after the picture
-
-References available upon request.
+\noindent
+\begin{tabular}{@{}c@{\hspace{0.5em}}l@{}}
+\faGithub & Public Git repositories: \href{https://github.com/raskumandrin/}{github.com/raskumandrin}, \href{https://bitbucket.org/raskumandrin}{bitbucket.org/raskumandrin} \\[0.75ex]
+\faBlogger & Blog: \href{https://raskumandrin.pages.dev/en}{raskumandrin.pages.dev/en} \\[0.75ex]
+\faLinkedin & LinkedIn: \href{https://www.linkedin.com/in/raskumas/}{linkedin.com/in/raskumas}
+\end{tabular}
 
 
 \end{minipage}
 
+\par\vspace{-8.4ex} % добавить немного вертикального отступа после колонок
+
+\noindent\begin{center}
+  {\color[gray]{0.9}\textsf{\fontseries{l}\selectfont Typeset with love in \LaTeX, \today}}
+
+\end{center}
+\vspace*{-2ex} % подгоняет расстояние, чтобы текст не уехал на новую страницу
 \end{document}
 </code></pre>
