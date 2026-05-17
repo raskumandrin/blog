@@ -3,7 +3,6 @@ url: daughters-countries
 title: Countries my daughter has visited
 og_description: Collected the countries my daughter has visited over her eight years
 categories: things
-js: [fresco]
 visits:
   - country: "Russia"
     flag: "🇷🇺"
@@ -104,7 +103,7 @@ visits:
 </p>
 
 {% if v.photo and v.photo != "" %}
-<p><a class="fresco" data-fresco-group="i" href="{{ page.i }}{{ v.photo }}.jpg"><img src="{{ page.i }}{{ v.photo }}530.jpg" class="img-fluid rounded shadow-sm mb-2"></a></p>
+<p><a href="{{ page.i }}{{ v.photo }}.jpg"><img src="{{ page.i }}{{ v.photo }}530.jpg" class="img-fluid rounded shadow-sm mb-2"></a></p>
 {% endif %}
 </div>
 </div>

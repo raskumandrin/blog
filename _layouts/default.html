@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/assets/bootstrap.5.3.8.min.css">
-{% if page.js contains "fresco" %}
-<link href="/fresco-2.3.0/css/fresco.css" rel="stylesheet">
+{% if page.layout == "post" or page.layout == "post-en" or page.layout == "telegram" %}
+<link href="/assets/glightbox.min.css" rel="stylesheet">
 {% endif %}
 {% if page.js contains "plyr" %}
 <link href="/plyr-3.5.6/plyr.css" rel="stylesheet">
@@ -90,8 +90,9 @@
 </div></div>
 <script src="/jquery.3.4.1.min.js"></script>
 <script src="/assets/bootstrap.5.3.8.bundle.min.js"></script>
-{% if page.js contains "fresco" %}
-<script src="/fresco-2.3.0/js/fresco.min.js"></script>
+{% if page.layout == "post" or page.layout == "post-en" or page.layout == "telegram" %}
+<script src="/assets/glightbox.min.js" defer></script>
+<script src="/assets/post-lightbox.js" defer></script>
 {% endif %}
 {% if page.js contains "plyr" %}
 <script src="/plyr-3.5.6/plyr.polyfilled.min.js"></script>

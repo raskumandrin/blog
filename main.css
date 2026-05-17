@@ -65,6 +65,14 @@ a:hover {
     color: #0ebfe9;
 }
 
+.poster a.glightbox {
+    display: inline-block;
+}
+
+.poster a.glightbox img {
+    cursor: zoom-in;
+}
+
 /* Compatibility for archived posts written against Bootstrap 4 utilities. */
 .ml-0 { margin-left: 0 !important; }
 .ml-1 { margin-left: .25rem !important; }
