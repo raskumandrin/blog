@@ -16,6 +16,10 @@ body {
     padding-right: 0;
     max-width: 720px;
 }
+.navbar .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 a {
     color: #444;
     text-decoration: underline;
@@ -60,6 +64,45 @@ a.navbar-brand span.my-title {
 a:hover {
     color: #0ebfe9;
 }
+
+/* Compatibility for archived posts written against Bootstrap 4 utilities. */
+.ml-0 { margin-left: 0 !important; }
+.ml-1 { margin-left: .25rem !important; }
+.ml-2 { margin-left: .5rem !important; }
+.ml-3 { margin-left: 1rem !important; }
+.ml-4 { margin-left: 1.5rem !important; }
+.ml-5 { margin-left: 3rem !important; }
+.mr-0 { margin-right: 0 !important; }
+.mr-1 { margin-right: .25rem !important; }
+.mr-2 { margin-right: .5rem !important; }
+.mr-3 { margin-right: 1rem !important; }
+.mr-4 { margin-right: 1.5rem !important; }
+.mr-5 { margin-right: 3rem !important; }
+.pl-0 { padding-left: 0 !important; }
+.pl-1 { padding-left: .25rem !important; }
+.pl-2 { padding-left: .5rem !important; }
+.pl-3 { padding-left: 1rem !important; }
+.pl-4 { padding-left: 1.5rem !important; }
+.pl-5 { padding-left: 3rem !important; }
+.pr-0 { padding-right: 0 !important; }
+.pr-1 { padding-right: .25rem !important; }
+.pr-2 { padding-right: .5rem !important; }
+.pr-3 { padding-right: 1rem !important; }
+.pr-4 { padding-right: 1.5rem !important; }
+.pr-5 { padding-right: 3rem !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.float-left { float: left !important; }
+.float-right { float: right !important; }
+.badge-primary { color: #fff; background-color: var(--bs-primary); }
+.badge-secondary { color: #fff; background-color: var(--bs-secondary); }
+.badge-success { color: #fff; background-color: var(--bs-success); }
+.badge-danger { color: #fff; background-color: var(--bs-danger); }
+.badge-warning { color: #000; background-color: var(--bs-warning); }
+.badge-info { color: #000; background-color: var(--bs-info); }
+.badge-light { color: #000; background-color: var(--bs-light); }
+.badge-dark { color: #fff; background-color: var(--bs-dark); }
+.badge-pill { border-radius: var(--bs-border-radius-pill); }
 
 
 .poster {
