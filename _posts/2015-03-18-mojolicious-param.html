@@ -4,7 +4,7 @@ title: Метод Param контроллера от версии к версии
 og_description: Часто от проекта к проекту копируются какие-то куски кода. Это в свою очередь порой оказывается причиной неожиданных ошибок.
 categories: work
 tags: [perl]
-js: [highlight]
+js: [prism]
 ---
 <p>Часто от проекта к проекту копируются какие-то куски кода. Это в свою очередь
 	порой оказывается причиной неожиданных ошибок.</p>
@@ -16,7 +16,7 @@ js: [highlight]
 <p>Сначала был такой код:</p>
 	
 
-<pre><code># mojolicious до версии 6
+<pre><code class="language-perl"># mojolicious до версии 6
 
 foreach ( map { (/^count-(\d+)/) } $self->param ) {
 	...
@@ -39,11 +39,10 @@ foreach ( map { (/^count-(\d+)/) } $self->param ) {
 
 <p>Теперь для перебора всех переданных параметров работает такая конструкция:</p>
 
-<pre><code># mojolicious начиная с версии 6
+<pre><code class="language-perl"># mojolicious начиная с версии 6
 
 foreach ( map { (/^count-(\d+)/) } @{$self->req->params->names} ) {
 	...
 	$self->param("count-$_")
 	...
 }</code></pre>
-

@@ -3,7 +3,7 @@ url: latex-cv
 title: Резюме в LaTeX
 og_description: Почему LaTeX может быть удобнее Word для создания резюме? Рассказываю о своём опыте перехода, преимуществах, Docker-решении для сборки, полезных шаблонах и делюсь своим примером.
 categories: work
-js: [fresco,highlight]
+js: [fresco,prism]
 ---
 
 <p>Раньше резюме в Word’е было фактическим стандартом. Открываешь документ, правишь содержание, экспортируешь в PDF, отправляешь. Для контроля версий — отдельный Git-репозиторий, периодические коммиты. Формально система работает.</p>
@@ -16,7 +16,7 @@ js: [fresco,highlight]
 <p>Чтобы не устанавливать LaTeX локально, можно использовать Docker. Вот пример Docker-файла:</p>
 
 
-<pre><code>FROM debian:buster-slim
+<pre><code class="language-bash">FROM debian:buster-slim
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
@@ -31,12 +31,12 @@ WORKDIR /tmp</code></pre>
 
 <p>Сборка образа:</p>
 
-<pre><code>docker build -t latex .</code></pre>
+<pre><code class="language-bash">docker build -t latex .</code></pre>
 
 
 <p>Сборка документа:</p>
 
-<pre><code>docker run -v `pwd`:/tmp latex pdflatex cv.tex</code></pre>
+<pre><code class="language-bash">docker run -v `pwd`:/tmp latex pdflatex cv.tex</code></pre>
 
 <p>В результате в той же директории появится cv.pdf.</p>
 
@@ -58,7 +58,7 @@ WORKDIR /tmp</code></pre>
 
 <p>И его исходный код:</p>
 
-{% raw %}<pre><code>
+{% raw %}<pre><code class="language-latex">
 % !TeX spellcheck = en_GB
 % !TeX program = pdflatex
 

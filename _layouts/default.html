@@ -10,8 +10,8 @@
 {% if page.js contains "plyr" %}
 <link href="/plyr-3.5.6/plyr.css" rel="stylesheet">
 {% endif %}
-{% if page.js contains "highlight" %}
-<link rel="stylesheet" href="/solarized-light.9.17.1.min.css">
+{% if page.js contains "prism" %}
+<link href="/assets/prism.css" rel="stylesheet">
 {% endif %}
 
 
@@ -85,7 +85,7 @@
 </head>
 <body>
 {% include navigation.html %}
-<div class="container-wrapper"><div class="container">
+<div class="container-wrapper"><div class="container{% if page.js contains "prism" %} line-numbers{% endif %}">
 {{ content }}
 </div></div>
 <script src="/jquery.3.4.1.min.js"></script>
@@ -97,12 +97,8 @@
 <script src="/plyr-3.5.6/plyr.polyfilled.min.js"></script>
 <script>const players = Plyr.setup('.plyr-player');</script>
 {% endif %}
-{% if page.js contains "highlight" %}
-<script src="/highlight.9.17.1.min.js"></script>
-<script type="text/javascript">
-  hljs.configure({tabReplace: '    '}); // 4 spaces
-  hljs.initHighlightingOnLoad();
-</script>
+{% if page.js contains "prism" %}
+<script src="/assets/prism.js" defer></script>
 {% endif %}
 
 </body>
