@@ -1,6 +1,7 @@
 {% comment %}
 https://giscus.app
 {% endcomment %}
+{% unless page.url == "/" or page.url == "/en/" %}
 {% if page.lang == "en" %}
 <script src="https://giscus.app/client.js"
         data-repo="raskumandrin/blog"
@@ -34,4 +35,4 @@ https://giscus.app
         async>
 </script>
 {% endif %}
-
+{% endunless %}

@@ -1,27 +1,59 @@
 ---
 layout: default
-title: Raskumandrin • Misanthrope's blog
+title: Raskumandrin
+lang: en
+og_description: "Personal site of Stas Raskumandrin: web development, applied data, notes on life, travel, and technology."
+no_ogimage: true
 ---
 
 {% assign posts = site.posts | where: "lang", "en" %}
 
-{% for post in posts limit:site.max_posts %}
-<div class="poster">
+<section class="home-hero">
+  <p class="home-mobile-title">Raskumandrin</p>
+  <h1>Web developer and applied data engineer.</h1>
+  <p>I build small, clear web services, maps, calculators, and data tools. I write about technology, relocation, documents, cities, daily observations, and projects worth keeping in public.</p>
+  <p>I live in Novi Sad and work with web development, automation, and data. This site is both a personal archive and a portfolio.</p>
+</section>
 
-{% include post-nav.html p=post %}
+<section class="home-section home-contact">
+  <h2>Contact</h2>
+  <p><a href="https://t.me/raskumas">Telegram</a>, <a href="https://www.linkedin.com/in/raskumas/">LinkedIn</a>, <a href="https://github.com/raskumandrin">GitHub</a>, <a href="https://www.upwork.com/o/profiles/users/_~01d64c6ae8d4d867ff/">UpWork</a>.</p>
+</section>
 
-<h1><a href="{{ site.base-url }}{{ post.url }}">{{ post.title }}</a></h1>
+<div class="home-columns">
+  <section class="home-section">
+    <div class="home-section-header">
+      <h2>Recent Posts</h2>
+      <a href="/en/contents">Archive</a>
+    </div>
+    <div class="home-list">
+      {% for post in posts limit:3 %}
+      <article class="home-list-item">
+        <div class="home-meta">{% include date-en.html date=post.date %}</div>
+        <h3><a href="{{ site.base-url }}{{ post.url }}">{{ post.title }}</a></h3>
+        {% if post.og_description %}
+        <p>{{ post.og_description }}</p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
 
-{% include post-nav-date-tag.html p=post %}
-
-{% if post.og_description %}
-<p>{{ post.og_description }}</p>
-{% endif %}
-{% unless post.no_tiser %}
-<p><a href="{{ site.base-url }}{{ post.url }}"><img src="{{ post.i }}tiser.jpg"></a></p>
-{% endunless %}
-
+  <section class="home-section">
+    <h2>Projects</h2>
+    <div class="home-projects">
+      <article>
+        <h3><a href="https://applied-data-bureau.pages.dev/">Applied Data Bureau</a></h3>
+        <p>Research, data visualization, and applied analytics.</p>
+      </article>
+      <article>
+        <h3><a href="https://smokefreens.github.io/en/">Smoke Free Cafes in Novi Sad</a></h3>
+        <p>A map of places with a clean atmosphere and notes on local cafes.</p>
+      </article>
+      <article>
+        <h3><a href="/en/web-portfolio">Web Portfolio</a></h3>
+        <p>A selection of older and newer web projects with descriptions.</p>
+      </article>
+    </div>
+  </section>
 </div>
-{% endfor %}
-
-<p>«Raskumandrin • Misanthrope's blog»: <a href="/en/contents">Contents</a>
