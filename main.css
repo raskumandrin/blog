@@ -36,6 +36,21 @@ ul.navbar-nav span.contact-link-vk {
     text-decoration: line-through;
 }
 
+ul.navbar-nav a.nav-link.bureau-link,
+ul.navbar-nav a.dropdown-item.bureau-link {
+    color: #ed2a23;
+    text-decoration: none;
+}
+
+ul.navbar-nav a.nav-link.bureau-link:hover,
+ul.navbar-nav a.dropdown-item.bureau-link:hover {
+    color: #ed2a23;
+}
+
+ul.navbar-nav a.nav-link.bureau-link span {
+    text-decoration: underline;
+}
+
 
 
 a.navbar-brand span.my-title {
