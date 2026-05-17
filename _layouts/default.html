@@ -8,7 +8,7 @@
 <link href="/assets/glightbox.min.css" rel="stylesheet">
 {% endif %}
 {% if page.js contains "plyr" %}
-<link href="/plyr-3.5.6/plyr.css" rel="stylesheet">
+<link href="/assets/plyr-3.8.4/plyr.css" rel="stylesheet">
 {% endif %}
 {% if page.js contains "prism" %}
 <link href="/assets/prism.css" rel="stylesheet">
@@ -95,8 +95,8 @@
 <script src="/assets/post-lightbox.js" defer></script>
 {% endif %}
 {% if page.js contains "plyr" %}
-<script src="/plyr-3.5.6/plyr.polyfilled.min.js"></script>
-<script>const players = Plyr.setup('.plyr-player');</script>
+<script src="/assets/plyr-3.8.4/plyr.polyfilled.min.js"></script>
+<script>const players = Plyr.setup('.plyr-player', { iconUrl: '/assets/plyr-3.8.4/plyr.svg', blankVideo: '/assets/plyr-3.8.4/blank.mp4' });</script>
 {% endif %}
 {% if page.js contains "prism" %}
 <script src="/assets/prism.js" defer></script>
