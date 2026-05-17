@@ -181,8 +181,103 @@ a:hover {
     color: gray;
 }
 
-i.fa-instagram.href {
-    padding-right: 6px;
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    vertical-align: -0.125em;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+.dropdown-item .icon,
+.icon.icon-link {
+    margin-right: 6px;
+}
+
+.icon.icon-address-card {
+    -webkit-mask-image: url('/assets/icons/address-card.svg');
+    mask-image: url('/assets/icons/address-card.svg');
+}
+
+.icon.icon-bars {
+    -webkit-mask-image: url('/assets/icons/bars.svg');
+    mask-image: url('/assets/icons/bars.svg');
+}
+
+.icon.icon-bitbucket {
+    -webkit-mask-image: url('/assets/icons/bitbucket.svg');
+    mask-image: url('/assets/icons/bitbucket.svg');
+}
+
+.icon.icon-briefcase {
+    -webkit-mask-image: url('/assets/icons/briefcase.svg');
+    mask-image: url('/assets/icons/briefcase.svg');
+}
+
+.icon.icon-calendar-alt {
+    -webkit-mask-image: url('/assets/icons/calendar-alt.svg');
+    mask-image: url('/assets/icons/calendar-alt.svg');
+}
+
+.icon.icon-facebook {
+    -webkit-mask-image: url('/assets/icons/facebook.svg');
+    mask-image: url('/assets/icons/facebook.svg');
+}
+
+.icon.icon-github {
+    -webkit-mask-image: url('/assets/icons/github.svg');
+    mask-image: url('/assets/icons/github.svg');
+}
+
+.icon.icon-hackerrank {
+    -webkit-mask-image: url('/assets/icons/hackerrank.svg');
+    mask-image: url('/assets/icons/hackerrank.svg');
+}
+
+.icon.icon-handshake {
+    -webkit-mask-image: url('/assets/icons/handshake.svg');
+    mask-image: url('/assets/icons/handshake.svg');
+}
+
+.icon.icon-home {
+    -webkit-mask-image: url('/assets/icons/home.svg');
+    mask-image: url('/assets/icons/home.svg');
+}
+
+.icon.icon-instagram {
+    -webkit-mask-image: url('/assets/icons/instagram.svg');
+    mask-image: url('/assets/icons/instagram.svg');
+}
+
+.icon.icon-linkedin {
+    -webkit-mask-image: url('/assets/icons/linkedin.svg');
+    mask-image: url('/assets/icons/linkedin.svg');
+}
+
+.icon.icon-list-ul {
+    -webkit-mask-image: url('/assets/icons/list-ul.svg');
+    mask-image: url('/assets/icons/list-ul.svg');
+}
+
+.icon.icon-telegram {
+    -webkit-mask-image: url('/assets/icons/telegram.svg');
+    mask-image: url('/assets/icons/telegram.svg');
+}
+
+.icon.icon-telegram-plane {
+    -webkit-mask-image: url('/assets/icons/telegram-plane.svg');
+    mask-image: url('/assets/icons/telegram-plane.svg');
+}
+
+.icon.icon-vk {
+    -webkit-mask-image: url('/assets/icons/vk.svg');
+    mask-image: url('/assets/icons/vk.svg');
 }
 
 
