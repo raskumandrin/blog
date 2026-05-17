@@ -4,6 +4,17 @@ permalink: /:slug
 image-storage: "https://pub-3e57dc6805fe47c580cebfca6d4f2436.r2.dev"
 domain: "https://raskumandrin.pages.dev"
 
+exclude:
+  - AGENTS.md
+  - Dockerfile
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+  - .jekyll-cache/
+  - .sass-cache/
+  - node_modules/
+  - vendor/
 
 collections:
   telegram:
