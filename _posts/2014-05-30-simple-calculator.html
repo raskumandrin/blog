@@ -21,13 +21,17 @@ tags: [javascript]
 <style>
 div.cheburator { margin-bottom: 15px;  }
 div.cheburator div { margin-bottom: 5px;  }
-div.cheburator label { margin-right: 30px; }
-div.cheburator label input { border: 0; height: 16px;  }
-div.cheburator label span { display: inline-block; height: 16px; vertical-align: top;  }
+div.cheburator-options { display: flex; flex-wrap: wrap; gap: 8px 30px; margin-top: 8px; }
 div.cheburator span#prepay { font-weight: bolder; }
-div.cheburator span.help { color: silver; margin-left: 20px;}
-table.cheburator  { border: solid 1px silver; border-radius: 2px; width: 100%; margin-bottom: 0; }
-table.cheburator td  { border: solid 1px silver; padding: 6px 0px; width: 40px; font-size:90%; }
+div.cheburator span.help { color: silver; display: block; margin-top: 4px; }
+table.cheburator { margin-bottom: 0; table-layout: fixed; }
+table.cheburator th,
+table.cheburator td { width: 14.2857%; }
+@media (max-width: 767.98px) {
+	table.cheburator th,
+	table.cheburator td { width: 25%; }
+}
+input#slider1 { display: block; width: 100%; }
 
 </style>
 
@@ -37,31 +41,51 @@ table.cheburator td  { border: solid 1px silver; padding: 6px 0px; width: 40px; 
 
 <div class="cheburator">
 	<div>Количество запросов, продвигаемых в поисковой системе:</div>
-	<label><input type="radio" name="count" value="1">
-		<span>менее&nbsp;100</span></label>
-	<label><input type="radio" name="count" value="2" checked>
-		<span>100&mdash;300</span></label>
-	<label><input type="radio" name="count" value="3">
-		<span>300&mdash;500</span></label>
-	<label><input type="radio" name="count" value="4">
-		<span>500&mdash;1000</span></label>
-	<label><input type="radio" name="count" value="5">
-		<span>более&nbsp;1000</span></label>
+	<div class="cheburator-options">
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="count" id="count-1" value="1">
+			<label class="form-check-label" for="count-1">менее&nbsp;100</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="count" id="count-2" value="2" checked>
+			<label class="form-check-label" for="count-2">100&mdash;300</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="count" id="count-3" value="3">
+			<label class="form-check-label" for="count-3">300&mdash;500</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="count" id="count-4" value="4">
+			<label class="form-check-label" for="count-4">500&mdash;1000</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="count" id="count-5" value="5">
+			<label class="form-check-label" for="count-5">более&nbsp;1000</label>
+		</div>
+	</div>
 </div>
 <div class="cheburator">
 <div>Единицы изменения:</div>
-	<label><input type="radio" name="measure" value="1000">
-		<span>Рубли</span></label>
-	<label><input type="radio" name="measure" value="1" checked>
-		<span>Тысячи&nbsp;рублей</span></label>
+	<div class="cheburator-options">
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="measure" id="measure-rubles" value="1000">
+			<label class="form-check-label" for="measure-rubles">Рубли</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="measure" id="measure-thousands" value="1" checked>
+			<label class="form-check-label" for="measure-thousands">Тысячи&nbsp;рублей</label>
+		</div>
+	</div>
 </div>
 <div class="cheburator">
-	Величина предоплаты: <span class="span1" id="prepay">30</span> <span class="help">&harr; подвигайте бегунок влево вправо для изменения</span></div>
-<div style="margin-bottom: 20px;"><div id="slider1"></div></div>
+	Величина предоплаты: <span class="span1" id="prepay">30</span>
+	<span class="help">&harr; подвигайте бегунок влево вправо для изменения</span>
+</div>
+<div style="margin-bottom: 20px;"><input id="slider1" class="form-range" type="range" min="15" max="30" value="30"></div>
 
-<table class="cheburator">
+<table class="cheburator table table-sm table-bordered table-striped align-middle text-center mb-3 d-none d-md-table">
 	<tr class="header">
-		<td style="max-width: 150px">Месяц</td>
+		<th scope="row" class="text-start">Месяц</th>
 
 		<td>1</td>
 		<td>2</td>
@@ -69,6 +93,24 @@ table.cheburator td  { border: solid 1px silver; padding: 6px 0px; width: 40px; 
 		<td>4</td>
 		<td>5</td>
 		<td>6</td>
+	</tr>
+	<tr class="data">
+		<th scope="row" class="text-start">Сумма</th>
+
+
+		<td data-month="1"></td>
+		<td data-month="2"></td>
+		<td data-month="3"></td>
+		<td data-month="4"></td>
+		<td data-month="5"></td>
+		<td data-month="6"></td>
+	</tr>
+</table>
+
+<table class="cheburator table table-sm table-bordered table-striped align-middle text-center d-none d-md-table">
+	<tr class="header">
+		<th scope="row" class="text-start">Месяц</th>
+
 		<td>7</td>
 		<td>8</td>
 		<td>9</td>
@@ -77,21 +119,87 @@ table.cheburator td  { border: solid 1px silver; padding: 6px 0px; width: 40px; 
 		<td>12</td>
 	</tr>
 	<tr class="data">
-		<td style="max-width: 150px">Сумма</td>
+		<th scope="row" class="text-start">Сумма</th>
 
 
-		<td  id="m1"></td>
-		<td  id="m2"></td>
-		<td  id="m3"></td>
-		<td  id="m4"></td>
-		<td  id="m5"></td>
-		<td  id="m6"></td>
-		<td  id="m7"></td>
-		<td  id="m8"></td>
-		<td  id="m9"></td>
-		<td id="m10"></td>
-		<td id="m11"></td>
-		<td id="m12"></td>
+		<td data-month="7"></td>
+		<td data-month="8"></td>
+		<td data-month="9"></td>
+		<td data-month="10"></td>
+		<td data-month="11"></td>
+		<td data-month="12"></td>
+	</tr>
+</table>
+
+<table class="cheburator table table-sm table-bordered table-striped align-middle text-center mb-3 d-table d-md-none">
+	<tr class="header">
+		<th scope="row" class="text-start">Месяц</th>
+
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+	<tr class="data">
+		<th scope="row" class="text-start">Сумма</th>
+
+
+		<td data-month="1"></td>
+		<td data-month="2"></td>
+		<td data-month="3"></td>
+	</tr>
+</table>
+
+<table class="cheburator table table-sm table-bordered table-striped align-middle text-center mb-3 d-table d-md-none">
+	<tr class="header">
+		<th scope="row" class="text-start">Месяц</th>
+
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+	</tr>
+	<tr class="data">
+		<th scope="row" class="text-start">Сумма</th>
+
+
+		<td data-month="4"></td>
+		<td data-month="5"></td>
+		<td data-month="6"></td>
+	</tr>
+</table>
+
+<table class="cheburator table table-sm table-bordered table-striped align-middle text-center mb-3 d-table d-md-none">
+	<tr class="header">
+		<th scope="row" class="text-start">Месяц</th>
+
+		<td>7</td>
+		<td>8</td>
+		<td>9</td>
+	</tr>
+	<tr class="data">
+		<th scope="row" class="text-start">Сумма</th>
+
+
+		<td data-month="7"></td>
+		<td data-month="8"></td>
+		<td data-month="9"></td>
+	</tr>
+</table>
+
+<table class="cheburator table table-sm table-bordered table-striped align-middle text-center d-table d-md-none">
+	<tr class="header">
+		<th scope="row" class="text-start">Месяц</th>
+
+		<td>10</td>
+		<td>11</td>
+		<td>12</td>
+	</tr>
+	<tr class="data">
+		<th scope="row" class="text-start">Сумма</th>
+
+
+		<td data-month="10"></td>
+		<td data-month="11"></td>
+		<td data-month="12"></td>
 	</tr>
 </table>
 
@@ -99,9 +207,6 @@ table.cheburator td  { border: solid 1px silver; padding: 6px 0px; width: 40px; 
 	
 	<p>После этого на странице следовали поля для контактных данных клиента и
 		и сообщения, чтобы он мог сразу же со страницы отправить выбранный вариант оплаты.</p>
-		
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css">
 
 <script>
 
@@ -114,60 +219,74 @@ var data = {
 	,5 : { prepay: 40 , price: [6,6,10,12,15,15,22,22,30,30,35,35] }
 };
 
+var slider = document.getElementById('slider1');
+var prepay = document.getElementById('prepay');
+
 function getPrepay() {
-	return data[ $('input[name=count]:checked').val() ]['prepay'];
+	return data[document.querySelector('input[name=count]:checked').value].prepay;
+}
+
+function getMeasure() {
+	return parseInt(document.querySelector('input[name=measure]:checked').value, 10);
+}
+
+function getSliderPrepay() {
+	return parseInt(slider.value, 10);
 }
 
 function setSlider() {
-	$( "#slider1" ).slider({
-		range: "max",
-		min: 15,
-		max: getPrepay(),
-		value: getPrepay(),
-		slide: function( event, ui ) {
-			$('span#prepay').html( ui.value * parseInt( $('input[name=measure]:checked').val() ) );
-			updatePriceTable();
-		}
-	});
+	slider.max = getPrepay();
+	slider.value = getPrepay();
 }
 
 function updatePrepay() {
-	$('span#prepay').html( getPrepay() * parseInt( $('input[name=measure]:checked').val() ) );
+	prepay.innerHTML = getPrepay() * getMeasure();
 	setSlider();
 	updatePriceTable();
 };
 
 function updatePriceTable() {
+	var measure = getMeasure();
+	var maxPrepay = getPrepay() * measure;
+	var currentPrepay = parseInt(prepay.innerHTML, 10);
+	var m6_add = (maxPrepay - currentPrepay) / 10 * 3 / 6;
+	var m4_add = (maxPrepay - currentPrepay) / 10 * 8 / 4;
 	
-	var m6_add = ( getPrepay() * parseInt( $('input[name=measure]:checked').val() ) - parseInt( $('span#prepay').html() ) ) / 10 * 3 / 6;
-	var m4_add = ( getPrepay() * parseInt( $('input[name=measure]:checked').val() ) - parseInt( $('span#prepay').html() ) ) / 10 * 8 / 4;
-
 	for(var month = 1; month <= 12; month++) {
-		$('td#m'+month).html( data[ $('input[name=count]:checked').val() ]['price'][month-1] * $('input[name=measure]:checked').val() );
+		var price = data[document.querySelector('input[name=count]:checked').value].price[month-1] * measure;
 
-		if ( getPrepay() != $('span#prepay').html() ) {
+		if (maxPrepay != currentPrepay) {
 			if (month >=1 && month <=6) {
-				$('td#m'+month).html( parseInt( $('td#m'+month).html() ) + m6_add );
+				price = price + m6_add;
 			}
 			if (month >=7 && month <=10) {
-				$('td#m'+month).html( parseInt( $('td#m'+month).html() ) + m4_add );
+				price = price + m4_add;
 			}
 		}
+
+		document.querySelectorAll('[data-month="' + month + '"]').forEach(function(cell) {
+			cell.innerHTML = price;
+		});
 	}
 };
 
-$('input[name=count]').change(function(){
-	updatePrepay();
-});
-
-$('input[name=measure]').change(function(){
-	$('span#prepay').html(  parseInt( $('#slider1').slider( "option", "value" ) ) * $('input[name=measure]:checked').val() );
+slider.addEventListener('input', function() {
+	prepay.innerHTML = getSliderPrepay() * getMeasure();
 	updatePriceTable();
 });
 
-$(function() {
-	setSlider();
-	updatePrepay();
+document.querySelectorAll('input[name=count]').forEach(function(input) {
+	input.addEventListener('change', updatePrepay);
 });
+
+document.querySelectorAll('input[name=measure]').forEach(function(input) {
+	input.addEventListener('change', function() {
+		prepay.innerHTML = getSliderPrepay() * getMeasure();
+		updatePriceTable();
+	});
+});
+
+setSlider();
+updatePrepay();
 
 </script>
