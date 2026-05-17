@@ -140,8 +140,6 @@
 
 7. `Jekyll 4.4.1` сейчас актуален. Срочного обновления не требуется. При будущих обновлениях проверять только Docker-среду, не устанавливать gems локально на Mac.
 
-8. В `_layouts/default.html` есть небольшой jQuery-код для страницы `patagonia-summits`. При отказе от jQuery его нужно переписать на vanilla JS.
-
 ## Похоже не используется или требует проверки на удаление
 
 1. `js-year-calendar-2.0.0/js-year-calendar.min.js`, `js-year-calendar.ru.js`, `js-year-calendar-data.js`, `js-year-calendar.min.css`: сейчас не подключаются. Для `/telegram` используется уже сгенерированный HTML календаря и `js-year-calendar.custom.css`.

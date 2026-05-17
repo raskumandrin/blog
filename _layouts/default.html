@@ -106,24 +106,5 @@
 </script>
 {% endif %}
 
-{% if page.url contains "patagonia-summits" %}
-<script>
-$(document).ready(function() {
-$('p.spoiler span').click(function(){
-    $(this).parent().next().slideDown();
-    $(this).parent().hide();
-});
-
-$('p.iframe-spoiler span').click(function(){
-    $(this).parent().next().show();
-    $(this).parent().next().find("iframe").prop("src", function(){
-        return $(this).data("src");
-    });
-    $(this).parent().hide();
-});
-});
-</script>
-{% endif %}
-
 </body>
 </html>

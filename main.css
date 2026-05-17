@@ -327,9 +327,6 @@ i.fa-instagram.href {
 }
 
 
-div.spoiler { display: none; }
-p.spoiler span,p.iframe-spoiler span { cursor: pointer; border-bottom: dashed 1px #333;  }
-
 .paper-sheet {
   background: white;
   display: block;
