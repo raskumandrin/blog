@@ -4,7 +4,6 @@ title: Как полиция наш краденный iPad искала
 og_description: "Спойлер: никак. Пока были в театре, из машины (из бардачка) украли айпад, навигатор и пол-упаковки гематогена."
 categories: things
 tags: [mvd]
-js: [common]
 ---
 <p><em>Спойлер: никак.</em><p>
 
@@ -96,3 +95,60 @@ js: [common]
 	<br>• Полиция не будет сама ничего искать.
 	<br>• Если вы сами всё найдёте, то без проблем и сложностей получите поддержку от полиции всё оформить.
 	<br>• Районная прокуратура не работает (именно сам механизм прокурорского наздора).</p>	
+
+<style>
+.spoiler-toggle {
+	background: none;
+	border: 0;
+	color: #444;
+	cursor: pointer;
+	font: inherit;
+	padding: 0;
+	text-decoration: underline;
+}
+
+.spoiler-toggle:hover {
+	color: #0ebfe9;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	function isDocumentParagraph(element) {
+		return element.matches('p') && element.querySelector('img') && element.textContent.trim() === '';
+	}
+
+	document.querySelectorAll('.pre-spoiler').forEach(function (intro, index) {
+		var section = document.createElement('div');
+		section.id = 'spoiler-' + index;
+		section.hidden = true;
+
+		var current = intro.nextElementSibling;
+		while (current && isDocumentParagraph(current)) {
+			var next = current.nextElementSibling;
+			section.appendChild(current);
+			current = next;
+		}
+
+		if (!section.children.length) {
+			return;
+		}
+
+		var toggle = document.createElement('button');
+		toggle.type = 'button';
+		toggle.className = 'spoiler-toggle';
+		toggle.setAttribute('aria-expanded', 'false');
+		toggle.setAttribute('aria-controls', section.id);
+		toggle.textContent = 'Показать документы';
+		toggle.addEventListener('click', function () {
+			var isHidden = section.hidden;
+			section.hidden = !isHidden;
+			toggle.setAttribute('aria-expanded', String(isHidden));
+			toggle.textContent = isHidden ? 'Скрыть документы' : 'Показать документы';
+		});
+
+		intro.append(' ', toggle);
+		intro.after(section);
+	});
+});
+</script>
