@@ -1,16 +1,15 @@
-FROM ruby:2.7.6
+FROM jekyll/builder:latest
 
-WORKDIR /app
-RUN gem update --system
-RUN gem install sass-embedded -v 1.63.6
-RUN gem install jekyll bundler
+WORKDIR /srv/jekyll
 
-COPY . .
+COPY Gemfile Gemfile.lock* ./
+RUN bundle install
 
 EXPOSE 4000
 
-CMD ["bundle", "exec", "jekyll", "serve", "--livereload", "--host", "0.0.0.0"]
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--livereload", "--force_polling"]
+ 
+# LOCAL DEVELOPMENT
 
-# docker build -t jekyll .
-# docker image ls
-# docker run -dp 4000:4000 -v "$(pwd):/app" jekyll
+# docker build -t jblog .
+# docker run --rm -it -p 4000:4000 -v "$PWD:/srv/jekyll" jblog bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling
