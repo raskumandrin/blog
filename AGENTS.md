@@ -118,7 +118,7 @@
 - `Fresco 2.3.0`: подключается условно через `js: [fresco]`; используется массово в постах и telegram-архиве.
 - `Plyr 3.5.6`: подключается условно через `js: [plyr]`; используется для аудио/видео.
 - `Highlight.js 9.17.1` и `solarized-light.9.17.1.min.css`: подключаются условно через `js: [highlight]`; используются в небольшом числе постов.
-- `js-year-calendar 2.0.0`: для страницы `/telegram` сейчас подключается только `js-year-calendar.custom.css`; JS-файлы библиотеки не подключаются.
+- `js-year-calendar.custom.css`: для страницы `/telegram`; сам календарь уже сгенерирован в HTML.
 - `Jekyll 4.4.1` и `webrick 1.9.2`: Ruby-зависимости зафиксированы в `Gemfile.lock`.
 - Отдельная HTML-страница `_posts/2016-03-02-spb-baths.html` использует `layout: none` и сама подключает `Plyr`.
 - Два поста с калькулятором дополнительно подключают старый jQuery UI с CDN `code.jquery.com`.
@@ -139,14 +139,12 @@
 
 ## Похоже не используется или требует проверки на удаление
 
-1. `js-year-calendar-2.0.0/js-year-calendar.min.js`, `js-year-calendar.ru.js`, `js-year-calendar-data.js`, `js-year-calendar.min.css`: сейчас не подключаются. Для `/telegram` используется уже сгенерированный HTML календаря и `js-year-calendar.custom.css`.
+1. `sprite.css` и `sprite.png`: не найдены в подключениях. Похоже на старый спрайт, который можно проверить и удалить, если не нужен внешним статическим ссылкам.
 
-2. `sprite.css` и `sprite.png`: не найдены в подключениях. Похоже на старый спрайт, который можно проверить и удалить, если не нужен внешним статическим ссылкам.
+2. Лишние сборки в `plyr-3.5.6/`: `.mjs`, non-polyfilled JS и source maps не подключаются. Сейчас реально используются `plyr.css`, `plyr.polyfilled.min.js` и, возможно, `plyr.svg`/`blank.mp4` через сам Plyr.
 
-3. Лишние сборки в `plyr-3.5.6/`: `.mjs`, non-polyfilled JS и source maps не подключаются. Сейчас реально используются `plyr.css`, `plyr.polyfilled.min.js` и, возможно, `plyr.svg`/`blank.mp4` через сам Plyr.
+3. `js: [common]` в `_posts/2016-10-03-ipad.html`: в layout нет обработки `common`, поэтому это мертвый флаг фронтматтера.
 
-4. `js: [common]` в `_posts/2016-10-03-ipad.html`: в layout нет обработки `common`, поэтому это мертвый флаг фронтматтера.
+4. `fresco-2.3.0` содержит только реально подключаемые `css/fresco.css` и `js/fresco.min.js`, но внутри CSS есть skin-ассеты. Перед удалением вложенных файлов Fresco нужно проверить, какие изображения тянет CSS.
 
-5. `fresco-2.3.0` содержит только реально подключаемые `css/fresco.css` и `js/fresco.min.js`, но внутри CSS есть skin-ассеты. Перед удалением вложенных файлов Fresco нужно проверить, какие изображения тянет CSS.
-
-6. `cv-sheet.docx`, `cv-sheet.pdf`, `cv25.pdf`, `summary.doc`, `summary.pdf`, `aws10oct2019.png`: по текстовому поиску не найдены как ссылки из шаблонов/постов. Перед удалением проверить, не используются ли они прямыми внешними URL.
+5. `cv-sheet.docx`, `cv-sheet.pdf`, `cv25.pdf`, `summary.doc`, `summary.pdf`, `aws10oct2019.png`: по текстовому поиску не найдены как ссылки из шаблонов/постов. Перед удалением проверить, не используются ли они прямыми внешними URL.
