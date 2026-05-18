@@ -61,20 +61,9 @@
 {% endif %}
 {% endif %}
 
-{% if page.url == "/" or page.url == "/en/" %}
-<link rel="alternate" hreflang="en" href="{{ site.domain }}/en/" />
-<link rel="alternate" hreflang="ru" href="{{ site.domain }}/" />
-{% endif %}
-
-{% if page.id %}
-{% assign posts = site.posts %}
-{% for post in posts %}
-{% if post.lang == "en" and post.slug == page.slug  %}
-<link rel="alternate" hreflang="en" href="{{ site.domain }}/en/{{ page.slug }}" />
-<link rel="alternate" hreflang="ru" href="{{ site.domain }}/{{ page.slug }}" />
-{% endif %}
-{% endfor %}
-{% endif %}
+{% include language-urls.html %}
+<link rel="alternate" hreflang="en" href="{{ site.domain }}{{ en_url }}" />
+<link rel="alternate" hreflang="ru" href="{{ site.domain }}{{ ru_url }}" />
 
 </head>
 <body>

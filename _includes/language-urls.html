@@ -1,0 +1,123 @@
+{% comment %}
+Логика переключения языковых версий:
+
+1. Этот include вычисляет ссылки на языковые версии страницы.
+
+2. Для каждой страницы вычисляются две ссылки:
+   ru_url и en_url.
+
+3. По умолчанию используется fallback:
+   ru_url = "/";
+   en_url = "/en/".
+
+4. Для главной страницы:
+   "/" переключается на "/en/";
+   "/en/" переключается на "/".
+
+5. Для страницы содержания:
+   "/contents" переключается на "/en/contents";
+   "/en/contents" переключается на "/contents".
+
+6. Для постов:
+   если текущая страница русская, среди site.posts ищется английский пост с таким же slug;
+   если найден, en_url ведёт на найденный post.url;
+   если не найден, en_url остаётся "/en/";
+   если текущая страница английская, среди site.posts ищется русский пост с таким же slug;
+   если найден, ru_url ведёт на найденный post.url;
+   если не найден, ru_url остаётся "/".
+
+7. Для тегов, стран и категорий:
+   если у страницы есть page.tag, page.country или page.category,
+   такой же label ищется в данных другого языка;
+   если пара найдена, ссылка ведёт на "/en/{{ label }}" или "/{{ label }}";
+   если пара не найдена, остаётся fallback на главную выбранного языка.
+
+8. Эти же вычисленные ru_url и en_url используются:
+   в языковом переключателе в навигации;
+   в link rel="alternate" hreflang="ru";
+   в link rel="alternate" hreflang="en".
+{% endcomment %}
+
+{% assign ru_url = "/" %}
+{% assign en_url = "/en/" %}
+
+{% if page.lang == "ru" %}
+  {% assign ru_url = page.url %}
+{% elsif page.lang == "en" %}
+  {% assign en_url = page.url %}
+{% endif %}
+
+{% if page.url == "/" or page.url == "/en/" %}
+  {% assign ru_url = "/" %}
+  {% assign en_url = "/en/" %}
+{% elsif page.url == "/contents" or page.url == "/contents.html" or page.url == "/en/contents" or page.url == "/en/contents.html" %}
+  {% assign ru_url = "/contents" %}
+  {% assign en_url = "/en/contents" %}
+{% elsif page.id %}
+  {% for post in site.posts %}
+    {% if post.slug == page.slug %}
+      {% if post.lang == "ru" %}
+        {% assign ru_url = post.url %}
+      {% elsif post.lang == "en" %}
+        {% assign en_url = post.url %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% elsif page.category %}
+  {% assign has_ru_category = false %}
+  {% assign has_en_category = false %}
+  {% for category in site.data.ru.categories %}
+    {% if category.label == page.category %}
+      {% assign has_ru_category = true %}
+    {% endif %}
+  {% endfor %}
+  {% for category in site.data.en.categories %}
+    {% if category.label == page.category %}
+      {% assign has_en_category = true %}
+    {% endif %}
+  {% endfor %}
+  {% if has_ru_category %}
+    {% assign ru_url = "/" | append: page.category %}
+  {% endif %}
+  {% if has_en_category %}
+    {% assign en_url = "/en/" | append: page.category %}
+  {% endif %}
+{% elsif page.country %}
+  {% assign has_ru_country = false %}
+  {% assign has_en_country = false %}
+  {% for country in site.data.ru.countries %}
+    {% if country.label == page.country %}
+      {% assign has_ru_country = true %}
+    {% endif %}
+  {% endfor %}
+  {% for country in site.data.en.countries %}
+    {% if country.label == page.country %}
+      {% assign has_en_country = true %}
+    {% endif %}
+  {% endfor %}
+  {% if has_ru_country %}
+    {% assign ru_url = "/" | append: page.country %}
+  {% endif %}
+  {% if has_en_country %}
+    {% assign en_url = "/en/" | append: page.country %}
+  {% endif %}
+{% elsif page.tag %}
+  {% assign has_ru_tag = false %}
+  {% assign has_en_tag = false %}
+  {% for tag in site.data.ru.tags %}
+    {% if tag.label == page.tag %}
+      {% assign has_ru_tag = true %}
+    {% endif %}
+  {% endfor %}
+  {% for tag in site.data.en.tags %}
+    {% if tag.label == page.tag %}
+      {% assign has_en_tag = true %}
+    {% endif %}
+  {% endfor %}
+  {% if has_ru_tag %}
+    {% assign ru_url = "/" | append: page.tag %}
+  {% endif %}
+  {% if has_en_tag %}
+    {% assign en_url = "/en/" | append: page.tag %}
+  {% endif %}
+{% endif %}
