@@ -1,7 +1,42 @@
 [
-    {"label": "russia", "title": "Russia"},
-    {"label": "srbija", "title": "Serbia"},
-    {"label": "things", "title": "Life"},
-    {"label": "work", "title": "Work"},
-    {"label": "world", "title": "World"}
+    {
+        "label": "things",
+        "title": "Life",
+        "contents_title": "Life",
+        "description": "Personal notes, recipes, DIY, and everyday fragments",
+        "url": "/en/things",
+        "emoji": "🧵"
+    },
+    {
+        "label": "work",
+        "title": "Work",
+        "contents_title": "Work",
+        "description": "Code, Perl, Unix, JavaScript, markup, and old projects",
+        "url": "/en/work",
+        "emoji": "🔧"
+    },
+    {
+        "label": "srbija",
+        "title": "Serbia",
+        "contents_title": "Serbia after 2022",
+        "description": "Relocation, documents, daily life, taxes, buses, Novi Sad",
+        "url": "/en/srbija",
+        "emoji": "🇷🇸"
+    },
+    {
+        "label": "russia",
+        "title": "Russia",
+        "contents_title": "Russia before 2022",
+        "description": "Saint Petersburg, Leningrad Oblast, local places, and city notes",
+        "url": "/en/russia",
+        "emoji": "🇷🇺"
+    },
+    {
+        "label": "world",
+        "title": "World",
+        "contents_title": "World",
+        "description": "Travel, countries, cities, and notes from trips",
+        "url": "/en/world",
+        "emoji": "🗺️"
+    }
 ]

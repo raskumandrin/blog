@@ -1,120 +1,153 @@
 ---
-layout: contents
+layout: default
 title: Все записи
 permalink: contents
 ---
 
-<div id="header">
-	<h1>Все записи</h1><span class="rightfloat">&larr;<a href="/"><span style="
-        display:inline-block;    
-        width:16px;    
-        height:16px;  
-        vertical-align:text-top;  
-        background-image:url(/apple-touch-icon-16x16.png);  
-        background-repeat:no-repeat;
-        margin-right: 8px;
-        background-position: 0px 0px; }
-        
-        "></span>Блог</a></span></div>
+{% assign ru_posts = site.posts | where: "lang", "ru" %}
+{% assign postsByYear = ru_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 
-<div class="date-and-tags">
-Теги:
+<main class="contents-page">
+    <header class="contents-header">
+        <div class="contents-title">
+            <h1>Все записи</h1>
+            <a class="contents-home" href="/" title="Главная страница"><i class="icon icon-home" aria-hidden="true"></i> Главная страница</a>
+        </div>
+        <p>Блог с 2006 года: личные заметки, путешествия, технические статьи, Сербия, обращения, рецепты и DIY.</p>
+    </header>
 
-{% for tag in site.data.ru.tags %}
-    <span class="tags">
-        <a href="/{{ tag.label }}">{{ tag.title }}</a>
-    </span>
-{% endfor %}
+    <section class="contents-section" aria-labelledby="contents-sections-title">
+        <h2 id="contents-sections-title">Разделы</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 contents-sections">
+            {% for section in site.data.ru.categories %}
+                <div class="col">
+                    <a class="contents-section-link" href="{{ section.url }}">
+                        <strong><span class="contents-link-text">{{ section.contents_title }}</span> <span class="contents-link-emoji" aria-hidden="true">{{ section.emoji }}</span></strong>
+                        <span>{{ section.description }}</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 
-</div>
+    <section class="contents-section" aria-labelledby="contents-filters-title">
+        <h2 id="contents-filters-title">Подборки</h2>
 
-<div class="date-and-tags">
-<a class="telegram" href="/telegram">Архив телеграм-канала</a>
-</div>
+        <p class="contents-telegram"><a href="/telegram"><i class="icon icon-telegram" aria-hidden="true"></i> <span class="contents-link-text">Архив телеграм-канала</span></a></p>
 
-<div class="date-and-tags">
-Страны:
+        <h3>Страны</h3>
+        <ul class="nav contents-link-list">
+            {% for country in site.data.ru.countries %}
+                <li class="nav-item"><a class="nav-link" href="/{{ country.label }}"><span class="contents-link-emoji" aria-hidden="true">{{ country.emoji }}</span> <span class="contents-link-text">{{ country.title }}</span></a></li>
+            {% endfor %}
+        </ul>
 
-{% for country in site.data.ru.countries %}
-       <a href="/{{ country.label }}" title="{{ country.title }}"><span class="flag-{{ country.label }}">&nbsp;</span></a>
-{% endfor %}
+        <h3>Теги</h3>
+        <ul class="nav contents-link-list">
+            {% for tag in site.data.ru.tags %}
+                <li class="nav-item"><a class="nav-link" href="/{{ tag.label }}"><span class="contents-link-text">{{ tag.title }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </section>
 
-</div>
+    <section class="contents-section" aria-labelledby="contents-archive-title">
+        <h2 id="contents-archive-title">Архив по годам</h2>
 
+        <fieldset class="archive-filters" id="archive-filters">
+            <legend>Разделы архива</legend>
+            {% for section in site.data.ru.categories %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="archive-filter-{{ section.label }}" value="{{ section.label }}" checked>
+                    <label class="form-check-label" for="archive-filter-{{ section.label }}"><span aria-hidden="true">{{ section.emoji }}</span> {{ section.contents_title }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
 
-<table id="content">
-<tr>
-  <th>Всё остальное</th>
-  <th>Работа </th>
-  <th>Обращения</th>
-  <th>Сербия после 2022 года<br>Россия до 2022 года</th>
-  <th>Мир</th>
-</tr>
+        <div class="archive-years">
+            {% for year in postsByYear %}
+                {% if forloop.index == 3 %}
+                    <p class="archive-expand"><a href="#" id="archive-expand-all">Развернуть все года</a></p>
+                {% endif %}
+                {% assign posts_count_mod_100 = year.items.size | modulo: 100 %}
+                {% assign posts_count_mod_10 = year.items.size | modulo: 10 %}
+                {% assign posts_count_word = "записей" %}
+                {% if posts_count_mod_100 < 11 or posts_count_mod_100 > 14 %}
+                    {% if posts_count_mod_10 == 1 %}
+                        {% assign posts_count_word = "запись" %}
+                    {% elsif posts_count_mod_10 >= 2 and posts_count_mod_10 <= 4 %}
+                        {% assign posts_count_word = "записи" %}
+                    {% endif %}
+                {% endif %}
+                <details class="archive-year" {% if forloop.index <= 2 %}open{% endif %}>
+                    <summary><span>{{ year.name }}</span><em>{{ year.items.size }} {{ posts_count_word }}</em></summary>
+                    <ol class="list-unstyled">
+                        {% assign year_posts = year.items | reverse %}
+                        {% for post in year_posts %}
+                            {% assign section_key = "things" %}
+                            {% if post.categories contains "srbija" %}
+                                {% assign section_key = "srbija" %}
+                            {% elsif post.categories contains "russia" %}
+                                {% assign section_key = "russia" %}
+                            {% elsif post.categories contains "world" %}
+                                {% assign section_key = "world" %}
+                            {% elsif post.categories contains "work" %}
+                                {% assign section_key = "work" %}
+                            {% elsif post.categories contains "official" %}
+                                {% assign section_key = "official" %}
+                            {% endif %}
+                            {% assign section_data = site.data.ru.categories | where: "label", section_key | first %}
+                            <li class="archive-post" data-section="{{ section_key }}">
+                                <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{% include date-no-year.html date=post.date %}</time>
+                                <span class="archive-post-title">
+                                    <span class="archive-emoji" aria-hidden="true">{{ section_data.emoji }}</span>
+                                    <a href="{{ post.url }}">{{ post.title }}</a>
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </details>
+            {% endfor %}
+        </div>
+    </section>
+</main>
 
-{% assign postsByYear =
-    site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
-{% for year in postsByYear %}
-    <tr><td class="year" colspan="6">{{ year.name }} год</td></tr>
-<tr>
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "things" and post.lang == "ru"  %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
-{% endfor %}
-</dl></td>
+<script>
+(function () {
+    var expandAll = document.getElementById('archive-expand-all');
+    var filters = Array.prototype.slice.call(document.querySelectorAll('#archive-filters input[type="checkbox"]'));
+    var posts = Array.prototype.slice.call(document.querySelectorAll('.archive-post'));
+    var years = Array.prototype.slice.call(document.querySelectorAll('.archive-year'));
 
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "work" and post.lang == "ru" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
-{% endfor %}
-</dl></td>
+    function applyArchiveFilters() {
+        var enabledSections = filters
+            .filter(function (filter) {
+                return filter.checked;
+            })
+            .map(function (filter) {
+                return filter.value;
+            });
 
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "official" and post.lang == "ru" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
-{% endfor %}
-</dl></td>
+        posts.forEach(function (post) {
+            post.hidden = enabledSections.indexOf(post.getAttribute('data-section')) === -1;
+        });
 
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "russia" and post.lang == "ru" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
+        years.forEach(function (year) {
+            year.hidden = !year.querySelector('.archive-post:not([hidden])');
+        });
+    }
 
-{% if post.categories contains "srbija" and post.lang == "ru" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
+    filters.forEach(function (filter) {
+        filter.addEventListener('change', applyArchiveFilters);
+    });
 
-{% endfor %}
-</dl></td>
-
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "world" and post.lang == "ru" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
-{% endfor %}
-</dl></td>
-
-</tr>
-
-{% endfor %}
-
-</table>
-
+    if (expandAll) {
+        expandAll.addEventListener('click', function (event) {
+            event.preventDefault();
+            years.forEach(function (year) {
+                year.open = true;
+            });
+            expandAll.hidden = true;
+        });
+    }
+})();
+</script>

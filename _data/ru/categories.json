@@ -1,8 +1,50 @@
 [
-    {"label": "official", "title": "Обращения к чиновникам"},
-    {"label": "russia", "title": "Странствия тут"},
-    {"label": "srbija", "title": "Сербия"},
-    {"label": "things", "title": "Всё остальное"},
-    {"label": "work", "title": "Работа"},
-    {"label": "world", "title": "Странствия там"}
+    {
+        "label": "things",
+        "title": "Всё остальное",
+        "contents_title": "Всё остальное",
+        "description": "Личные заметки, рецепты, DIY и разные бытовые истории",
+        "url": "/things",
+        "emoji": "🧵"
+    },
+    {
+        "label": "work",
+        "title": "Работа",
+        "contents_title": "Работа",
+        "description": "Код, Perl, Unix, JavaScript, разметка и старые проекты",
+        "url": "/work",
+        "emoji": "🔧"
+    },
+    {
+        "label": "official",
+        "title": "Обращения к чиновникам",
+        "contents_title": "Обращения",
+        "description": "Городская среда, ведомства, дворы и ответы чиновников",
+        "url": "/official",
+        "emoji": "🏛️"
+    },
+    {
+        "label": "srbija",
+        "title": "Сербия",
+        "contents_title": "Сербия после 2022 года",
+        "description": "Переезд, документы, быт, налоги, автобусы, Нови-Сад",
+        "url": "/srbija",
+        "emoji": "🇷🇸"
+    },
+    {
+        "label": "russia",
+        "title": "Странствия тут",
+        "contents_title": "Россия до 2022 года",
+        "description": "Петербург, Ленобласть, Юнтолово, ГИБДД и городские дела",
+        "url": "/russia",
+        "emoji": "🇷🇺"
+    },
+    {
+        "label": "world",
+        "title": "Странствия там",
+        "contents_title": "Мир",
+        "description": "Путешествия, страны, города и заметки из поездок",
+        "url": "/world",
+        "emoji": "🗺️"
+    }
 ]

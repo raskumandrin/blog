@@ -1,85 +1,143 @@
 ---
-layout: contents
+layout: default
 title: Contents
 permalink: en/contents
 ---
 
-<div id="header">
-	<h1>Contents</h1><span class="rightfloat">&larr;<a href="/en/"><span style="
-        display:inline-block;    
-        width:16px;    
-        height:16px;  
-        vertical-align:text-top;  
-        background-image:url(/apple-touch-icon-16x16.png);  
-        background-repeat:no-repeat;
-        margin-right: 8px;
-        background-position: 0px 0px; }
-        
-        "></span>Blog</a></span></div>
+{% assign en_posts = site.posts | where: "lang", "en" %}
+{% assign postsByYear = en_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 
+<main class="contents-page">
+    <header class="contents-header">
+        <div class="contents-title">
+            <h1>Contents</h1>
+            <a class="contents-home" href="/en/" title="Main page"><i class="icon icon-home" aria-hidden="true"></i> Main page</a>
+        </div>
+        <p>Blog since 2006: personal notes, travel, technical articles, Serbia, recipes, DIY, and long-running memory.</p>
+    </header>
 
-<table id="content">
-<tr>
-  <th>Life</th>
-  <th>Work </th>
-  <th>Serbia after 2022<br>Russia before 2022</th>
-  <th>World</th>
-</tr>
+    <section class="contents-section" aria-labelledby="contents-sections-title">
+        <h2 id="contents-sections-title">Sections</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 contents-sections">
+            {% for section in site.data.en.categories %}
+                <div class="col">
+                    <a class="contents-section-link" href="{{ section.url }}">
+                        <strong><span class="contents-link-text">{{ section.contents_title }}</span> <span class="contents-link-emoji" aria-hidden="true">{{ section.emoji }}</span></strong>
+                        <span>{{ section.description }}</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 
-{% assign postsByYear =
-    site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
-{% for year in postsByYear %}
-    <tr><td class="year" colspan="5">{{ year.name }} </td></tr>
-<tr>
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "things" and post.lang == "en" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
-{% endfor %}
-</dl></td>
+    <section class="contents-section" aria-labelledby="contents-filters-title">
+        <h2 id="contents-filters-title">Collections</h2>
 
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "work" and post.lang == "en" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
-{% endfor %}
-</dl></td>
+        <h3>Countries</h3>
+        <ul class="nav contents-link-list">
+            {% for country in site.data.en.countries %}
+                <li class="nav-item"><a class="nav-link" href="/en/{{ country.label }}"><span class="contents-link-emoji" aria-hidden="true">{{ country.emoji }}</span> <span class="contents-link-text">{{ country.title }}</span></a></li>
+            {% endfor %}
+        </ul>
 
+        <h3>Tags</h3>
+        <ul class="nav contents-link-list">
+            {% for tag in site.data.en.tags %}
+                <li class="nav-item"><a class="nav-link" href="/en/{{ tag.label }}"><span class="contents-link-text">{{ tag.title }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </section>
 
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "srbija" and post.lang == "en" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
+    <section class="contents-section" aria-labelledby="contents-archive-title">
+        <h2 id="contents-archive-title">Archive by year</h2>
 
-{% if post.categories contains "russia" and post.lang == "en" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
+        <fieldset class="archive-filters" id="archive-filters">
+            <legend>Archive sections</legend>
+            {% for section in site.data.en.categories %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="archive-filter-{{ section.label }}" value="{{ section.label }}" checked>
+                    <label class="form-check-label" for="archive-filter-{{ section.label }}"><span aria-hidden="true">{{ section.emoji }}</span> {{ section.contents_title }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
 
-{% endfor %}
-</dl></td>
+        <div class="archive-years">
+            {% for year in postsByYear %}
+                {% if forloop.index == 3 %}
+                    <p class="archive-expand"><a href="#" id="archive-expand-all">Expand all years</a></p>
+                {% endif %}
+                {% assign posts_count_word = "posts" %}
+                {% if year.items.size == 1 %}
+                    {% assign posts_count_word = "post" %}
+                {% endif %}
+                <details class="archive-year" {% if forloop.index <= 2 %}open{% endif %}>
+                    <summary><span>{{ year.name }}</span><em>{{ year.items.size }} {{ posts_count_word }}</em></summary>
+                    <ol class="list-unstyled">
+                        {% assign year_posts = year.items | reverse %}
+                        {% for post in year_posts %}
+                            {% assign section_key = "things" %}
+                            {% if post.categories contains "srbija" or post.categories contains "serbia" %}
+                                {% assign section_key = "srbija" %}
+                            {% elsif post.categories contains "russia" %}
+                                {% assign section_key = "russia" %}
+                            {% elsif post.categories contains "world" %}
+                                {% assign section_key = "world" %}
+                            {% elsif post.categories contains "work" %}
+                                {% assign section_key = "work" %}
+                            {% endif %}
+                            {% assign section_data = site.data.en.categories | where: "label", section_key | first %}
+                            <li class="archive-post" data-section="{{ section_key }}">
+                                <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{% include date-en-no-year.html date=post.date %}</time>
+                                <span class="archive-post-title">
+                                    <span class="archive-emoji" aria-hidden="true">{{ section_data.emoji }}</span>
+                                    <a href="{{ post.url }}">{{ post.title }}</a>
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </details>
+            {% endfor %}
+        </div>
+    </section>
+</main>
 
-<td><dl>
-{% assign cat = year.items | reverse %}
-{% for post in cat %}
-{% if post.categories contains "world" and post.lang == "en" %}
-    <dt>{% include date-no-year.html date=post.date %}</dt>
-    <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
-{% endif %}
-{% endfor %}
-</dl></td>
+<script>
+(function () {
+    var expandAll = document.getElementById('archive-expand-all');
+    var filters = Array.prototype.slice.call(document.querySelectorAll('#archive-filters input[type="checkbox"]'));
+    var posts = Array.prototype.slice.call(document.querySelectorAll('.archive-post'));
+    var years = Array.prototype.slice.call(document.querySelectorAll('.archive-year'));
 
-</tr>
+    function applyArchiveFilters() {
+        var enabledSections = filters
+            .filter(function (filter) {
+                return filter.checked;
+            })
+            .map(function (filter) {
+                return filter.value;
+            });
 
-{% endfor %}
+        posts.forEach(function (post) {
+            post.hidden = enabledSections.indexOf(post.getAttribute('data-section')) === -1;
+        });
 
-</table>
+        years.forEach(function (year) {
+            year.hidden = !year.querySelector('.archive-post:not([hidden])');
+        });
+    }
+
+    filters.forEach(function (filter) {
+        filter.addEventListener('change', applyArchiveFilters);
+    });
+
+    if (expandAll) {
+        expandAll.addEventListener('click', function (event) {
+            event.preventDefault();
+            years.forEach(function (year) {
+                year.open = true;
+            });
+            expandAll.hidden = true;
+        });
+    }
+})();
+</script>
