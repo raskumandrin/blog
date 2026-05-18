@@ -2,41 +2,8 @@
 url: graber-cen-s-s7-ru
 title: Грабер цен с s7.ru
 categories: work
+js: [prism]
 ---
-
-<style>
-
-
-ul.code {
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-  list-style-type: decimal;
-  list-style-position: outside;
-
-  background-color: #ffd;
-  padding: 0.5em 1.5em 0.5em 3.5em;
-  border-left: solid 2px #ffa;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  margin-left: 0;
-  color: silver;
-}
-
-ul.code li.br { margin-top: 0.75em; }
-ul.code li.indent1 { padding-left: 1.5em; }
-ul.code li.indent2 { padding-left: 3em; }
-ul.code li.indent3 { padding-left: 4.5em; }
-//ul.code li span { font-weight: bolder; color: #000; }
-ul.code li span { color: #000; }
-ul.code li span.c09f { color: #09f; }
-ul.code li span.c00f { color: #00f; }
-ul.code li span.c369 { color: #369; }
-ul.code li span.c090 { color: #090; }
-ul.code li span.c0f0 { color: #0f0; }
-ul.code li span.cc00 { color: #c00; }
-ul.code li span.c969 { color: #969; }
-</style>
-
 
 <h4>Задача</h4>
 
@@ -79,32 +46,38 @@ ul.code li span.c969 { color: #969; }
 <p>Ищем рейсы Москва—Уфа на 10 августа 2009 года; <a href="http://ru.wikipedia.org/wiki/Код_аэропорта_ИАТА">коды аэропортов</a> вытаскиваем из javascript'а страницы поиска.</p>
 <p>После нескольких попыток-итераций получается примерно такой код.</p>
 
-<ul class="code">
-<li><span class="c09f">#!/usr/bin/perl<span></li>
-<li><span><span class="c00f">use</span> strict;<span></li>
-<li><span><span class="c00f">use</span> LWP::UserAgent;</span></li>
-<li class="br"><span><span class="c00f">my</span> <span class="c369">$url</span> = <span class="c090">'http://ibe.s7.ru/S7/webqtrip.html'</span>;</span></li>
-<li class="br"><span><span class="c00f">my</span> <span class="c369">%post_params</span> = (</span></li>
-<li class="indent1"><span><span class="cc00">origin</span> => <span class="c090">'MOW'</span>,</span></li>
-<li class="indent1"><span><span class="cc00">destination</span> => <span class="c090">'UFA'</span>,</span></li>
-<li class="indent1"><span><span class="cc00">departureDate</span> => <span class="c090">'2009-08-05'</span>,</span></li>
-<li class="indent1"><span><span class="cc00">cabinClass</span> => <span class="c090">'E'</span>, <span class="c09f"># 'E' - Econom class; 'B' - Business class</span></span></li>
-<li class="br indent1"><span><span class="cc00">journeySpan</span> => <span class="c090">'OW'</span>, <span class="cc00">numAdults</span> => <span class="c090">'1'</span>, <span class="cc00">numChildren</span> => <span class="c090">'0'</span>, <span class="cc00">numInfants</span> => <span class="c090">'0'</span>,</span></li>
-<li class="br indent1"><span><span class="cc00">_eventId</span> => <span class="c090">'submit'</span>, <span class="cc00">DIRECTION</span> => <span class="c090">'SUBMIT'</span>, <span class="cc00">searchTypeSelected</span> => <span class="c090">'NORMAL'</span>,</span></li>
-<li><span>);</span></li>
-<li class="br"><span><span class="c00f">my</span> <span class="c369">$ua</span> = LWP::UserAgent<span class="c00f">-></span>new;</span></li>
-<li><span><span class="c369">$ua</span><span class="c00f">-></span>agent(<span class="c090">'Search minimal price bot; programming: raskumandrin@gmail.com'</span>);</span></li>
-<li><span><span class="c369">$ua</span><span class="c00f">-></span>cookie_jar({});</span></li>
-<li><span><span class="c369">$ua</span><span class="c00f">-></span>proxy([<span class="c090">'http'</span>], <span class="c090">'http://proxy.server.com:3128'</span>);</span></li>
-<li><span><span class="c969">push</span> @{<span class="c369">$ua</span><span class="c00f">-></span>requests_redirectable},<span class="c090">'POST'</span>;</span></li>
-<li class="br"><span><span class="c00f">my</span> <span class="c369">$init_session</span> = <span class="c369">$ua</span><span class="c00f">-></span>get(<span class="c369">$url</span>);</span></li>
-<li><span>(<span class="c369">$post_params</span>{<span class="cc00">_flowExecutionKey</span>}) =</span></li>
-<li class="indent1"><span>(<span class="c369">$init_session</span><span class="c00f">-></span>content =~ <span class="c090">m{name="_flowExecutionKey" value="([^"]*)}</span><span class="c969">m</span>);</span></li>
-<li class="br"><span><span class="c00f">my</span> <span class="c369">$response</span> = <span class="c369">$ua</span><span class="c00f">-></span>post(<span class="c369">$url</span>,\<span class="c369">%post_params</span>);</span></li>
-<li class="br"><span><span class="c969">open</span> HTML,<span class="c090">'>'</span>,<span class="c090">'response.html'</span>;</span></li>
-<li><span><span class="c969">print</span> HTML <span class="c369">$response</span><span class="c00f">-></span>content;</span></li>
-<li><span><span class="c969">close</span> HTML;</span></li>
-</ul>
+<pre><code class="language-perl">#!/usr/bin/perl
+use strict;
+use LWP::UserAgent;
+
+my $url = 'http://ibe.s7.ru/S7/webqtrip.html';
+
+my %post_params = (
+	origin => 'MOW',
+	destination => 'UFA',
+	departureDate => '2009-08-05',
+	cabinClass => 'E', # 'E' - Econom class; 'B' - Business class
+
+	journeySpan => 'OW', numAdults => '1', numChildren => '0', numInfants => '0',
+
+	_eventId => 'submit', DIRECTION => 'SUBMIT', searchTypeSelected => 'NORMAL',
+);
+
+my $ua = LWP::UserAgent->new;
+$ua->agent('Search minimal price bot; programming: raskumandrin@gmail.com');
+$ua->cookie_jar({});
+$ua->proxy(['http'], 'http://proxy.server.com:3128');
+push @{$ua->requests_redirectable},'POST';
+
+my $init_session = $ua->get($url);
+($post_params{_flowExecutionKey}) =
+	($init_session->content =~ m{name="_flowExecutionKey" value="([^"]*)}m);
+
+my $response = $ua->post($url,\%post_params);
+
+open HTML,'>','response.html';
+print HTML $response->content;
+close HTML;</code></pre>
 
 
 
@@ -118,33 +91,34 @@ ul.code li span.c969 { color: #969; }
 <p>Откуда-куда и дата у нас уже есть. Нужно собрать номера рейсов и минимальную стоимость.</p>
 
 
-<ul class="code">
-<li><span class="c09f">#!/usr/bin/perl<span></li>
-<li><span><span class="c00f">use</span> strict;<span></li>
-<li><span><span class="c00f">use</span> TagParser;</span></li>
-<li class="br"><span><span class="c00f">my</span> <span class="c369">$html</span> = HTML::TagParser->new(<span class="c090">'response.html'</span>);</span></li>
-<li class="br"><span><span class="c00f">my</span> <span class="c369">@inputs_s7</span> = <span class="c369">$html</span>->getElementsByAttribute( <span class="c090">"id"</span>, <span class="c090">"S7"</span> );</span></li>
-<li><span>foreach <span class="c00f">my</span> <span class="c369">$input_s7</span> (<span class="c369">@inputs_s7</span>) {</span></li>
-<li class="indent1"><span><span class="c00f">my</span> <span class="c369">$input_s7_attr</span> = <span class="c369">$input_s7</span><span class="c00f">-></span>attributes();</span></li>
-<li class="indent1"><span><span class="c00f">my</span> <span class="c369">@flight_elems</span> = <span class="c369">$html</span>->getElementsByAttribute(<span class="c090">'href'</span>,</span></li>
-<li class="indent2"><span><span class="c090">"javascript:showFlightInfo('</span><span class="c369">$input_s7_attr</span><span class="c00f">-></span>{<span class="cc00">value</span>}<span class="c090">');"</span>);</span></li>
-<li class="indent1"><span><span class="c00f">my</span> (<span class="c369">$outbound</span>) = (<span class="c369">$input_s7_attr</span><span class="c00f">-></span>{<span class="cc00">class</span>} =~ m{(.*) hide});</span></li>
-<li class="indent1"><span><span class="c00f">my</span> <span class="c369">$flight</span> = <span class="c369">$flight_elems</span>[1]<span class="c00f">-></span>innerText();</span></li>
-<li class="indent1"><span><span class="c369">$flight</span> =~ <span class="c969">s</span><span class="c090">{&nbsp;}{ }</span>;</span></li>
-<li class="indent1"><span><span class="c969">print</span> <span class="c090">"Flight: '</span><span class="c369">$flight</span><span class="c090">'; outbound code: </span><span class="c369">$outbound</span><span class="c090"><span class="c0f0">\n</span>"</span>;</span></li>
-<li class="br indent1"><span>foreach <span class="c00f">my</span> <span class="c369">$fare_type</span> <span class="c090">qw (PO LE TE LI)</span> {</span></li>
-<li class="indent2"><span><span class="c00f">my</span> <span class="c369">$price_elem</span> =</span></li>
-<li class="indent3"><span><span class="c369">$html</span><span class="c00f">-></span>getElementById(<span class="c090">"priceOfFareLabel_outbound_<span class="c369">${outbound}</span>_<span class="c369">$fare_type</span>"</span>);</span></li>
-<li class="indent2"><span>if (<span class="c369">$price_elem</span>) {</span></li>
-<li class="indent3"><span><span class="c00f">my</span> (<span class="c369">$price</span>) = (<span class="c369">$price_elem</span><span class="c00f">-></span>innerText() =~ <span class="c090">m{(.*) RUB}</span>);</span></li>
-<li class="indent3"><span><span class="c969">print</span> <span class="c090">"<span class="c369">$fare_type</span>: <span class="c369">$price</span> RUB<span class="c0f0">\n</span>"</span>;</span></li>
-<li class="indent2"><span>}</span></li>
-<li class="indent2"><span>else {</span></li>
-<li class="indent3"><span><span class="c969">print</span> <span class="c090">"<span class="c369">$fare_type</span>: -<span class="c0f0">\n</span>"</span>;</span></li>
-<li class="indent2"><span>}</span></li>
-<li class="indent1"><span>}</span></li>
-<li><span>}</span></li>
-</ul>
+<pre><code class="language-perl">#!/usr/bin/perl
+use strict;
+use TagParser;
+
+my $html = HTML::TagParser->new('response.html');
+
+my @inputs_s7 = $html->getElementsByAttribute( "id", "S7" );
+foreach my $input_s7 (@inputs_s7) {
+	my $input_s7_attr = $input_s7->attributes();
+	my @flight_elems = $html->getElementsByAttribute('href',
+		"javascript:showFlightInfo('$input_s7_attr->{value}');");
+	my ($outbound) = ($input_s7_attr->{class} =~ m{(.*) hide});
+	my $flight = $flight_elems[1]->innerText();
+	$flight =~ s{&amp;nbsp;}{ };
+	print "Flight: '$flight'; outbound code: $outbound\n";
+
+	foreach my $fare_type qw (PO LE TE LI) {
+		my $price_elem =
+			$html->getElementById("priceOfFareLabel_outbound_${outbound}_$fare_type");
+		if ($price_elem) {
+			my ($price) = ($price_elem->innerText() =~ m{(.*) RUB});
+			print "$fare_type: $price RUB\n";
+		}
+		else {
+			print "$fare_type: -\n";
+		}
+	}
+}</code></pre>
 
 <p>Этот код разбирает html с привлечением модуля TagParser, и выводит табличку рейсов-тарифов с ценами.</p>
 
