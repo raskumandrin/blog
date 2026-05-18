@@ -20,6 +20,10 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+.navbar {
+    padding-top: .1875rem;
+    padding-bottom: .1875rem;
+}
 a {
     color: #444;
     text-decoration: underline;
