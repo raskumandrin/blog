@@ -80,11 +80,11 @@
 
     <ul class="navbar-nav navbar-light ms-auto text-end">
 {% if page.lang == "en" %}
-        <li class="nav-item"><a class="nav-link" href="/"><span class="flag-ru"></span></a></li>
-        <li class="nav-item"><a class="nav-link disabled" href="/en/"><span class="flag-gb"></span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/" aria-label="Русская версия"><span aria-hidden="true">🇷🇺</span></a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="/en/" aria-label="English version"><span aria-hidden="true">🇬🇧</span></a></li>
 {% else %}
-        <li class="nav-item"><a class="nav-link disabled" href="/"><span class="flag-ru"></span></a></li>
-        <li class="nav-item"><a class="nav-link" href="/en/"><span class="flag-gb"></span></a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="/" aria-label="Русская версия"><span aria-hidden="true">🇷🇺</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/en/" aria-label="English version"><span aria-hidden="true">🇬🇧</span></a></li>
 {% endif %}
 
         

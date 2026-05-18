@@ -24,9 +24,9 @@
         {% for country in countries %}
         {% if include.p.countries contains country.label %}
             {% if page.lang == "en" %}
-            <a href="/en/{{ country.label }}"><span class="flag-{{ country.label }}"></span>{{ country.title }}</a>
+            <a class="country-link" href="/en/{{ country.label }}"><span aria-hidden="true">{{ country.emoji }}</span> <span class="country-link-text">{{ country.title }}</span></a>
             {% else %}
-            <a href="/{{ country.label }}"><span class="flag-{{ country.label }}"></span>{{ country.title }}</a>
+            <a class="country-link" href="/{{ country.label }}"><span aria-hidden="true">{{ country.emoji }}</span> <span class="country-link-text">{{ country.title }}</span></a>
             {% endif %}
         {% endif %}
         {% endfor %}

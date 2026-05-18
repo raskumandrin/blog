@@ -22,7 +22,7 @@ permalink: en/post.url
         <li>
         {% for country in site.data.en.countries %}
         {% if page.countries contains country.label %}
-            <a href="/en/{{ country.label }}"><span class="flag-{{ country.label }}"></span>{{ country.title }}</a>
+            <a class="country-link" href="/en/{{ country.label }}"><span aria-hidden="true">{{ country.emoji }}</span> <span class="country-link-text">{{ country.title }}</span></a>
         {% endif %}
         {% endfor %}
         </li>
