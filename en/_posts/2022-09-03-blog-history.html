@@ -1,0 +1,70 @@
+---
+url: blog-history
+title: The History of the Blog
+og_description:
+categories: things
+---
+
+<h2>2006. Peterlink</h2>
+
+<p>It all started roughly at the institute about fifteen years ago. That was the dial-up era; there were no Facebooks or VKontaktes. I made a page at the dial-up provider (Peterlink, I think) to post lab assignments and things like that for classmates.</p>
+<p>Now I can no longer find any traces of it, neither in backups nor in the web archive.</p>
+
+<h2>LiveJournal</h2>
+
+<p>Then I tried keeping a blog on LiveJournal. I disliked it immediately: you could not lay out some arbitrary page.</p>
+
+<h2>2008. Masterhost</h2>
+
+<p>I bought virtual hosting from Peterhost, but disliked it strongly and stopped using it.</p>
+
+<p>Then everything moved to Masterhost and existed for quite a long time on the domain stas.raskumandrin.ru and their virtual hosting.</p>
+
+<h2>2010. Mojolicious</h2>
+
+<p>I rewrote the blog on <a href="https://mojolicious.org">Mojolicious</a>.</p>
+
+<h2>2016. Digital Ocean + AWS S3</h2>
+
+<p>At some point I moved from Russian hosting to the European Digital Ocean. The price-quality ratio was many times more attractive than domestic analogues.</p>
+<p>Mojolicious was no longer running on shared hosting, but on a virtual server.</p>
+<p>I uploaded the images to AWS S3 storage.</p>
+
+<h2>2019. GitHub Pages + AWS S3</h2>
+
+</p>The move to GitHub Pages happened for several reasons. First, it is free. Second, because of the fuss around fake-news laws, a .ru domain could be blocked over some note about Navalny. GitHub is unlikely to be blocked. Third, the domain has to be renewed and monitored; with GitHub this problem does not exist.</p>
+<p>The downside is perhaps only that the blog now has a less pretty address.</p>
+<p>And the dynamic parts were lost too: several pages had backend work, for example the weather page that collected radar images from different sites.</p>
+
+
+<h2>2022. Turning the Blog Off and Back On</h2>
+
+<p>After sixteen months with the blog turned off, I finally turned it back on.</p>
+
+<p><a href="{{ page.i }}morda.png"><img src="{{ page.i }}morda.png"></a>
+</p>
+
+<p>
+    <a href="{{ page.i }}github.png"><img src="{{ page.i }}github.png"></a>
+</p>
+
+<h2>2024. Cloudflare Pages + Cloudflare R2</h2>
+
+<p>Unlike GitHub, Cloudflare Pages has broader possibilities for hosting web pages in terms of license-allowed content.</p>
+
+<p>Cloudflare R2, with its free limits, turns out to be more cost-effective than AWS S3 was.</p>
+
+
+<p>The move from GitHub and S3 took a total of several hours; Cloudflare has import tools that work very well.</p>
+
+
+<h2>Comments</h2>
+
+<p>Posts need comments. While this was a static site on shared hosting, there were no comments.</p>
+
+<p>Then, during the <a href="https://mojolicious.org">Mojolicious</a> period, comments were stored in a MySQL database.</p>
+<p>After moving to Jekyll there was again a period without comments. At different times I tried <a href="https://Disqus.com">Disqus</a> and <a href="https://comments.app">Telegram comments</a>.</p>
+
+<p>Now, in 2024, I have settled on comments built through integration with GitHub Discussions: <a href="https://giscus.app">https://giscus.app</a>.<p>
+
+<p>And every time I moved from platform to platform, the old comments were lost 🤡 — generally speaking, there were not many comments; I moved some directly into blog posts.</p>

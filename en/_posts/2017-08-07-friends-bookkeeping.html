@@ -1,0 +1,35 @@
+---
+url: friends-bookkeeping
+title: Bookkeeping for Friends on Trips
+categories: things
+---
+<h2>The Problem</h2>
+<p>Anna, Boris, Vika, and Gena are going to a barbecue. Boris pays 1200 rubles for gasoline.
+Gena and Vika buy meat for 1600 rubles and wine for 1200 rubles, while Anna buys vegetables for 600 rubles.
+Boris is driving and does not drink alcohol.</p>
+<p>How should the expenses be split?</p>
+
+<p>Almost everyone has faced a problem like this. For the conditions above, you can somehow calculate everything in your head.
+But if there are more expenses and more people, mental arithmetic is not really enough.</p>
+
+<p>On one of the trips <a href="https://www.facebook.com/pindew" title="facebook"><span class="footstep-icon icon-facebook"></span></a> <a href="https://www.facebook.com/pindew">Andrey</a>
+taught me how to calculate this easily and without mistakes.</p>
+
+<h2>Method</h2>
+<p>We need double-entry bookkeeping. We create a table with expenses, payments, and consumption for each participant. Take the first expense: on the left, enter who paid; on the right, split it among everyone who used it.</p>
+<p>The same is done for each expense. Note that Boris does not drink wine, so wine is split only among Anna, Vika, and Gena.</p>
+<p>Then calculate the sum for each column and add these sums separately for payments and consumption. The two final numbers must be the same. If they are not, there is an error somewhere above; check again. Double-entry bookkeeping is needed exactly here to catch inaccuracies in the accounting.</p>
+<p>I made an error even while writing this example, and the totals did not match at first.</p>
+<p>Anton also wrote about a similar method, but without double entry: <a href="http://batony4.livejournal.com/49665.html">http://batony4.livejournal.com/49665.html</a>.</p>
+<p>By the way, yes. Anton also mentions cases where someone lends money to someone else. This happens on trips from time to time. In the example above, if Boris lends Gena 1000 rubles, Boris should get that in the payments column and Gena in the consumption column; the other participants have empty cells, and the operation does not affect them.</p>
+<p>The next step is to subtract each participant's consumption from their payments.</p>
+<p>That is it. Now the person with a negative number pays the corresponding amounts to those with positive numbers. In this case Anna should pay 350 rubles to Boris and 150 rubles each to Vika and Gena.</p>
+<p>You can also check that the sum of all numbers in the last total row is zero. If not, you need to go back and look for the error.</p>
+
+<h2>A Few Comments</h2>
+<p>It is convenient to settle expenses in the evening of the same day, while everyone still more or less remembers what happened. It takes no more than half an hour.</p>
+<p>In a restaurant, if everyone pays separately, it should not be included in the shared bookkeeping at all. If one person pays for everyone, do not forget to take the bill with the list of dishes. Then you figure out who ate what and enter it into the table in the corresponding consumption columns.</p>
+<p>Appoint <b>one</b> person responsible for collecting receipts during the day and recording who paid how much and where.</p>
+<hr>
+<p>For example, here is a piece of our bookkeeping from the <a href="/czech-holiday">trip through Czechia</a>.</p>
+<p><a href="{{ page.i }}buh.jpg"><img src="{{ page.i }}buh.jpg"></a></p>
