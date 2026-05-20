@@ -8,27 +8,33 @@ tags: [maps]
 
 <p>Начать, пожалуй, следует с предполагаемого маршрута. На арендованной машине хочется самим проехать по южному побережью Крыма &mdash; Севастополь&mdash;Алупка&mdash;Ялта&mdash;Алушта&mdash;Судак&mdash;Коктебель &mdash; и домой возвращаться через Симферополь.</p>
 
-<map name="crimea_route">
-<area shape="poly" coords="0,133,194,133,505,210,505,343,0,343" href="{{ page.i }}sevastopol-alushta.png" alt="Севастополь - Алупка - Ялта - Алушта">
-<area shape="poly" coords="194,0,699,0,699,210,505,210,194,133" href="{{ page.i }}alushta-simferopol.png" alt="Алушта - Судак - Коктебель - Симферополь">
-</map>
-<p><img height="344" width="700" alt="Крым. Предполагаемый маршрут" src="{{ page.i }}map.th.png" usemap="#crimea_route"></p>
-<p class="gray" style="font-style: italic; font-size: 80%;">Карта Южного берега Крыма без нашего маршрута: <a href="{{ page.i }}ubk_map.zip" class="gray" style="padding-left: 20px; background: url('{{ page.i }}ubk_map.gif') no-repeat 0 2px;">ubk_map.zip</a>, 884 КБ. Вдруг кому пригодится. Внутри — «bmp» почти на 14 мегабайт.</p>
+<p><img alt="Крым. Предполагаемый маршрут" src="{{ page.i }}map.th.png" class="img-fluid"></p>
+<div class="list-group mb-3">
+<a class="list-group-item list-group-item-action" href="{{ page.i }}sevastopol-alushta.png">Севастополь — Алупка — Ялта — Алушта</a>
+<a class="list-group-item list-group-item-action" href="{{ page.i }}alushta-simferopol.png">Алушта — Судак — Коктебель — Симферополь</a>
+</div>
+<p class="text-muted fst-italic small">Карта Южного берега Крыма без нашего маршрута: <a href="{{ page.i }}ubk_map.zip">ubk_map.zip</a>, 884 КБ. Вдруг кому пригодится. Внутри — «bmp» почти на 14 мегабайт.</p>
 
 <p>Таблица расстояний.</p>
-<table>
-<th>Маршрут</th><th>Расстояние, км</th>
+<div class="table-responsive">
+<table class="table table-bordered table-sm">
+<thead>
+<tr><th scope="col">Маршрут</th><th scope="col">Расстояние, км</th></tr>
+</thead>
+<tbody>
 <tr><td>Севастополь&mdash;Алупка</td><td>60</td></tr>
 <tr><td>Алупка&mdash;Ялта</td><td>15</td></tr>
 <tr><td>Ялта&mdash;Алушта</td><td>35</td></tr>
 <tr><td>Алушта&mdash;Судак</td><td>65</td></tr>
 <tr><td>Судак&mdash;Коктебель</td><td>30</td></tr>
 <tr><td>Коктебель&mdash;Симферополь</td><td>115</td></tr>
+</tbody>
 </table>
+</div>
 
 
 <p>Так как городов много, а времени совсем мало, нужно как-то умудриться ужаться в некий график. Например, такой:</p>
-<p style="text-align: center;"><a href="{{ page.i }}plan.png"><img src="{{ page.i }}plan.th.png" alt="Крым. План отпуска"></a></p>
+<p class="text-center"><a href="{{ page.i }}plan.png"><img src="{{ page.i }}plan.th.png" alt="Крым. План отпуска" class="img-fluid img-thumbnail"></a></p>
 <p>Или такой:
 <br>Севастополь 17&mdash;18;
 <br>Балаклава, Симеиз &mdash; 18;
@@ -53,7 +59,7 @@ tags: [maps]
 
 <h4>Прокат машины</h4>
 
-<p class="gray" style="font-style: italic; font-size: 80%;">Пока разбираемся, что там с прокатом.</p>
+<p class="text-muted fst-italic small">Пока разбираемся, что там с прокатом.</p>
 <!--
 http://www.rentacar.com.ua/calculate.htm
 http://www.rentauto.com.ua/Tariffs/index.php
@@ -73,7 +79,7 @@ http://www.tour.crimea.com/NAVIGATOR/ABOUT_CRIMEA/autotour.shtml
 <p>Сначала я не хотел публиковать ссылки. Но всё же некоторые особо полезные стоит тут упомянуть.</p>
 
 <p><a href="http://crimea-kvn.ru/">crimea-kvn.ru</a>. Здесь нашёл много всяких удобных карт.</p>
-<p class="gray" style="font-style: italic; font-size: 80%;">Остальные ссылки опубликую попозже. Или не опубликую.</p>
+<p class="text-muted fst-italic small">Остальные ссылки опубликую попозже. Или не опубликую.</p>
 
 <!--
 http://allkrim.ru/
@@ -85,151 +91,130 @@ http://svideo.ucoz.ru/forum/6-14-1
 
 
 <h4 id="sights">Достопримечательности Крыма</h4>
-<style>
-
-#wrap{
-	float:left;
-	display:inline;/*Ie double margin fix*/
-}
-#wrap ul{
-	width: 700px;
-	list-style:none;
-	float:left;
-	position:relative;
-	left:-2px;
-	top:-2px;
-	background:white;
-	color:black;
-}
-#wrap li{
-	line-height:1.2;
-	margin:-0.9em 0 0 0;
-	position:relative;
-	float:left;
-	width:100%;
-	text-align:left;
-	border-bottom:1px dotted #000;
-	clear:both;
-}
-
-#wrap li span{
-	background:white;
-	padding:1px 0 1px 5px;
-	color:#000;
-	position:relative;
-	top:.2em;
-	left:1px;/* ie rounding error*/
-	float:right;
-}
-#wrap li em{
-	margin:0 ;
-	position:relative;
-	top:1.3em;
-	padding:0 5px 0 0;
-	background:white;
-	font-style: normal;
-}
-#wrap div{padding:0 5em 0 0}
-.amend{clear:both;padding:20px}
-.amend div{margin:0 0 1em 0}
-
-</style>
-<p><img src="{{ page.i }}01.jpg"></p>
-
-		<div id="wrap">
-			<ul>
-				<li>
-					<div><em>Карта Крыма</em></div>
-					<span><a href="{{ page.i }}02.jpg">2</a> &mdash; <a href="{{ page.i }}03.jpg">3</a></span></li>
-				<li>
-					<p><em>Ласточкино гнездо</em></p>
-					<span><a href="{{ page.i }}04.jpg">4</a></span></li>
-				<li>
-					<p><em>Гора Ай-Петри</em></p>
-					<span><a href="{{ page.i }}05.jpg">5</a></span></li>
-				<li>
-					<p><em>Ливадийский дворец</em></p>
-					<span><a href="{{ page.i }}06.jpg">6</a> &mdash; <a href="{{ page.i }}07.jpg">7</a></span></li>
-				<li>
-					<p><em>Алупкинский дворец</em></p>
-					<span><a href="{{ page.i }}08.jpg">8</a> &mdash; <a href="{{ page.i }}09.jpg">9</a></span></li>
-				<li>
-					<p><em>Массандровский дворец</em></p>
-					<span><a href="{{ page.i }}10.jpg">10</a> &mdash; <a href="{{ page.i }}11.jpg">11</a></span></li>
-				<li>
-					<p><em>Никитский ботанический сад</em></p>
-					<span><a href="{{ page.i }}12.jpg">12</a> &mdash; <a href="{{ page.i }}13.jpg">13</a></span></li>
-				<li>
-					<p><em>Достопримечательности Ялты</em></p>
-					<span><a href="{{ page.i }}14.jpg">14</a> &mdash; <a href="{{ page.i }}15.jpg">15</a></span></li>
-				<li>
-					<p><em>Форосская церковь</em></p>
-					<span><a href="{{ page.i }}16.jpg">16</a></span></li>
-				<li>
-					<p><em>Херсонес-Таврический</em></p>
-					<span><a href="{{ page.i }}17.jpg">17</a></span></li>
-				<li>
-					<p><em>Достопримечательности Севастополя</em></p>
-					<span><a href="{{ page.i }}18.jpg">18</a> &mdash; <a href="{{ page.i }}19.jpg">19</a></span></li>
-				<li>
-					<p><em>Достопримечательности Евпатории</em></p>
-					<span><a href="{{ page.i }}20.jpg">20</a></span></li>
-				<li>
-					<p><em>Достопримечательности Симферополя</em></p>
-					<span><a href="{{ page.i }}21.jpg">21</a></span></li>
-				<li>
-					<p><em>Бахчисарайский дворец</em></p>
-					<span><a href="{{ page.i }}22.jpg">22</a></span></li>
-				<li>
-					<p><em>Чуфут-Кале</em></p>
-					<span><a href="{{ page.i }}23.jpg">23</a></span></li>
-				<li>
-					<p><em>Мангул-Кале</em></p>
-					<span><a href="{{ page.i }}24.jpg">24</a></span></li>
-				<li>
-					<p><em>Пещерные города</em></p>
-					<span><a href="{{ page.i }}25.jpg">25</a></span></li>
-				<li>
-					<p><em>Водопады Крыма</em></p>
-					<span><a href="{{ page.i }}26.jpg">26</a></span></li>
-				<li>
-					<p><em>Пещеры Крыма</em></p>
-					<span><a href="{{ page.i }}27.jpg">27</a></span></li>
-				<li>
-					<p><em>Достопримечательности Гурзуфа</em></p>
-					<span><a href="{{ page.i }}28.jpg">28</a></span></li>
-				<li>
-					<p><em>Гора Демерджи</em></p>
-					<span><a href="{{ page.i }}29.jpg">29</a></span></li>
-				<li>
-					<p><em>Судакская крепость</em></p>
-					<span><a href="{{ page.i }}30.jpg">30</a></span></li>
-				<li>
-					<p><em>Новый Свет</em></p>
-					<span><a href="{{ page.i }}31.jpg">31</a></span></li>
-				<li>
-					<p><em>Кара-Даг</em></p>
-					<span><a href="{{ page.i }}32.jpg">32</a></span></li>
-				<li>
-					<p><em>Коктебель</em></p>
-					<span><a href="{{ page.i }}33.jpg">33</a></span></li>
-				<li>
-					<p><em>Достопримечательности Феодосии</em></p>
-					<span><a href="{{ page.i }}34.jpg">34</a></span></li>
-				<li>
-					<p><em>Картинная галерея им. И.К. Айвазовского</em></p>
-					<span><a href="{{ page.i }}35.jpg">35</a></span></li>
-				<li>
-					<p><em>Достопримечательности Керчи</em></p>
-					<span><a href="{{ page.i }}36.jpg">36</a> &mdash; <a href="{{ page.i }}37.jpg">37</a></span></li>
-				<li>
-					<p><em>Мыс Казантип</em></p>
-					<span><a href="{{ page.i }}38.jpg">38</a></span></li>
-				<li>
-					<p><em>Мыс Тарханкут</em></p>
-					<span><a href="{{ page.i }}39.jpg">39</a></span></li>
-				<li>
-					<p><em>Большой каньон крыма</em></p>
-					<span><a href="{{ page.i }}40.jpg">40</a></span></li>
-			</ul>
-		</div>
+<p><a href="{{ page.i }}01.jpg"><img src="{{ page.i }}01.jpg" class="img-fluid img-thumbnail"></a></p>
+<ul class="list-group mb-4">
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Карта Крыма</span>
+<span class="text-nowrap"><a href="{{ page.i }}02.jpg">2</a> &mdash; <a href="{{ page.i }}03.jpg">3</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Ласточкино гнездо</span>
+<span class="text-nowrap"><a href="{{ page.i }}04.jpg">4</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Гора Ай-Петри</span>
+<span class="text-nowrap"><a href="{{ page.i }}05.jpg">5</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Ливадийский дворец</span>
+<span class="text-nowrap"><a href="{{ page.i }}06.jpg">6</a> &mdash; <a href="{{ page.i }}07.jpg">7</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Алупкинский дворец</span>
+<span class="text-nowrap"><a href="{{ page.i }}08.jpg">8</a> &mdash; <a href="{{ page.i }}09.jpg">9</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Массандровский дворец</span>
+<span class="text-nowrap"><a href="{{ page.i }}10.jpg">10</a> &mdash; <a href="{{ page.i }}11.jpg">11</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Никитский ботанический сад</span>
+<span class="text-nowrap"><a href="{{ page.i }}12.jpg">12</a> &mdash; <a href="{{ page.i }}13.jpg">13</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Достопримечательности Ялты</span>
+<span class="text-nowrap"><a href="{{ page.i }}14.jpg">14</a> &mdash; <a href="{{ page.i }}15.jpg">15</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Форосская церковь</span>
+<span class="text-nowrap"><a href="{{ page.i }}16.jpg">16</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Херсонес-Таврический</span>
+<span class="text-nowrap"><a href="{{ page.i }}17.jpg">17</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Достопримечательности Севастополя</span>
+<span class="text-nowrap"><a href="{{ page.i }}18.jpg">18</a> &mdash; <a href="{{ page.i }}19.jpg">19</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Достопримечательности Евпатории</span>
+<span class="text-nowrap"><a href="{{ page.i }}20.jpg">20</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Достопримечательности Симферополя</span>
+<span class="text-nowrap"><a href="{{ page.i }}21.jpg">21</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Бахчисарайский дворец</span>
+<span class="text-nowrap"><a href="{{ page.i }}22.jpg">22</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Чуфут-Кале</span>
+<span class="text-nowrap"><a href="{{ page.i }}23.jpg">23</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Мангул-Кале</span>
+<span class="text-nowrap"><a href="{{ page.i }}24.jpg">24</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Пещерные города</span>
+<span class="text-nowrap"><a href="{{ page.i }}25.jpg">25</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Водопады Крыма</span>
+<span class="text-nowrap"><a href="{{ page.i }}26.jpg">26</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Пещеры Крыма</span>
+<span class="text-nowrap"><a href="{{ page.i }}27.jpg">27</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Достопримечательности Гурзуфа</span>
+<span class="text-nowrap"><a href="{{ page.i }}28.jpg">28</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Гора Демерджи</span>
+<span class="text-nowrap"><a href="{{ page.i }}29.jpg">29</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Судакская крепость</span>
+<span class="text-nowrap"><a href="{{ page.i }}30.jpg">30</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Новый Свет</span>
+<span class="text-nowrap"><a href="{{ page.i }}31.jpg">31</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Кара-Даг</span>
+<span class="text-nowrap"><a href="{{ page.i }}32.jpg">32</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Коктебель</span>
+<span class="text-nowrap"><a href="{{ page.i }}33.jpg">33</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Достопримечательности Феодосии</span>
+<span class="text-nowrap"><a href="{{ page.i }}34.jpg">34</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Картинная галерея им. И.К. Айвазовского</span>
+<span class="text-nowrap"><a href="{{ page.i }}35.jpg">35</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Достопримечательности Керчи</span>
+<span class="text-nowrap"><a href="{{ page.i }}36.jpg">36</a> &mdash; <a href="{{ page.i }}37.jpg">37</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Мыс Казантип</span>
+<span class="text-nowrap"><a href="{{ page.i }}38.jpg">38</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Мыс Тарханкут</span>
+<span class="text-nowrap"><a href="{{ page.i }}39.jpg">39</a></span>
+</li>
+<li class="list-group-item d-flex justify-content-between gap-3">
+<span>Большой каньон крыма</span>
+<span class="text-nowrap"><a href="{{ page.i }}40.jpg">40</a></span>
+</li>
+</ul>
