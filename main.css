@@ -758,30 +758,6 @@ a:hover {
 }
 
 
-.weight100 {
-    font-weight: 100;
-}
-
-.quote {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    border-left: solid 4px #ddd;
-/*    font-size: 1.2rem; */
-}
-
-.quote1rem {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    border-left: solid 4px #ddd;
-    font-size: 1rem;
-}
-
 .quote1 {
     padding-left: 1.5rem;
     border-left: solid 4px #ddd;
