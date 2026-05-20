@@ -9,9 +9,9 @@ tags: [raif]
 
 div.letter { margin: 2em 0; border: solid 1px gray; padding-bottom: 1em; }
 
-div.letter dl { padding: 10px; background-color: #eee; margin-bottom: 1em; margin-left: 0; }
-div.letter dl dt { float: left; width: 70px; line-height: 1.3em; }
-div.letter dl dd { line-height: 1.3em; }
+div.letter dl { display: grid; grid-template-columns: 70px 1fr; padding: 10px; background-color: #eee; margin-bottom: 1em; margin-left: 0; }
+div.letter dl dt { line-height: 1.3em; }
+div.letter dl dd { line-height: 1.3em; margin-left: 0; }
 
 div.letter p { padding: 0.5em 10px; font-family: 'Verdana';font-style: normal; font-size: 100%; line-height: 1em; }
 div.letter p.br { padding-top: 1.5em; }
@@ -88,7 +88,7 @@ p.br { padding-top: 1em; }
 
 </div>
 
-<div style="color: gray;">
+<div class="text-secondary">
 
 <p>Мойша купил за сто долларов осла у старого крестьянина. Крестьянин
 должен был привести ему осла на следующий день. Крестьянин пришел, как

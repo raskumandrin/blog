@@ -37,9 +37,9 @@ h1 { font: normal 2em 'Times New Roman'; }
 
 
 div#header { position: relative; margin: 16px 16px 16px 16px; zoom:1; }
-div#header span.rightfloat { position: absolute; top: 8px; right: 0; }
-div#header span.rightfloat a { margin-left: 1em; padding-right: 0; }
-div#header span.rightfloat, div#header span a { color: silver; }
+div#header span.header-link { position: absolute; top: 8px; right: 0; }
+div#header span.header-link a { margin-left: 1em; padding-right: 0; }
+div#header span.header-link, div#header span a { color: silver; }
 
 
 table.sauna { width: 100%; border-collapse: collapse; font-size:90%; }
@@ -126,28 +126,24 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 </head>
 <body>
 
-<div id="header"><h1>Общественные бани Петербурга <span style="color: gray; font-size: 70%; padding-left: 1em">20 бань / 24 отделения</span></h1><span class="rightfloat">&larr;<a href="/"><span class="icon-stas-raskumandrin-ru"></span>http://stas.raskumandrin.ru</a></span></div>
+<div id="header"><h1>Общественные бани Петербурга <span class="text-secondary small ps-3">20 бань / 24 отделения</span></h1><span class="header-link">&larr;<a href="/"><span class="icon-stas-raskumandrin-ru"></span>http://stas.raskumandrin.ru</a></span></div>
 
 
-<div style="margin: -8px 16px 16px 16px; zoom:1; ">
+<div class="mx-3 mb-3">
 
-<p style="float:right; width:50%;" >Тут в гости приезжал финн. Внезапно оказалось, что то, что у нас именуется финской сауной, на самом деле
+<p>Тут в гости приезжал финн. Внезапно оказалось, что то, что у нас именуется финской сауной, на самом деле
     никакая не финская сауна. Внимание! Это шведская сауна. Сухой пар.<br>А финская — это то же самое, но там, как заходят, начинают
     на печку лить воду. В результате пар становится влажным, как в русской парной. В этом и отличие.
     <br>Ниже везде, где написано «финская сауна», это следует воспринимать как «шведская сауна»</p>
 
-<div  style="float:left; width:50%; ">
-
-<p style="color: #090">Отсортировано по соотношению цена/качество. Получше — те, что выше.
-<br><span style="color: gray">Порой какая-то баня обладает уникальной и отличительной или характерной особенностью; в этом случае ячейку отметил пунктиром.</span>
+<p class="text-success">Отсортировано по соотношению цена/качество. Получше — те, что выше.
+<br><span class="text-secondary">Порой какая-то баня обладает уникальной и отличительной или характерной особенностью; в этом случае ячейку отметил пунктиром.</span>
 </p>
 
-<p style="color: #090">
-    <a href="/baths-things"><img src="{{ page.i }}list.png" alt="Cписок вещей в баню" style="margin-bottom: -8px; padding-right: 8px"></a>
-    <a href="/baths-things" style="font-size: 24px; color: #666;">Cписок вещей в баню</a>
+<p class="text-success">
+    <a href="/baths-things"><img class="pe-2" src="{{ page.i }}list.png" alt="Cписок вещей в баню"></a>
+    <a href="/baths-things" class="fs-4 text-secondary">Cписок вещей в баню</a>
 </p>
-    
-</div>
 
 
 </div>
@@ -157,7 +153,7 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 <tr>
 	<th>Баня</th>
 	<th>Отделение</th>
-	<th>Цена<br><span style="font-size:70%">2 часа</span></th>
+	<th>Цена<br><span class="small">2 часа</span></th>
 	<th>Людность</th>
 	<th>Печка</th>
 	<th>Парилка</th>
@@ -178,8 +174,8 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 <tr><td class="year" colspan="18"></td></tr>
 
 <tr>
-	<td><a href="https://yandex.ru/maps/org/lotsmanskiye_bani_obshcheye_otdeleniye/1213221970/">Лоцманские бани</a><br><a href="https://vk.com/festival_banya" style="color: silver">«Фестивальная банька»</a></td>     <!-- Баня -->
-	<td class="main-feature-silver">Понедельник<br><a href="https://vk.com/festival_banya">Третий этаж</a><br><span style="color: #990000">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
+	<td><a href="https://yandex.ru/maps/org/lotsmanskiye_bani_obshcheye_otdeleniye/1213221970/">Лоцманские бани</a><br><a href="https://vk.com/festival_banya" class="text-muted">«Фестивальная банька»</a></td>     <!-- Баня -->
+	<td class="main-feature-silver">Понедельник<br><a href="https://vk.com/festival_banya">Третий этаж</a><br><span class="text-danger">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
 	<td class="plus">700₽</td>   <!-- Цена -->
 	<td class="plus">может быть тестовато</td>       <!-- Много/мало народа -->
 	<td class="plus-plus">дровяная</td>        <!-- Печка -->
@@ -293,8 +289,8 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 <tr><td class="year" colspan="18"></td></tr>
 
 <tr>
-	<td><a href="https://yandex.ru/maps/org/lotsmanskiye_bani_obshcheye_otdeleniye/1213221970/">Лоцманские бани</a><br><a href="https://vk.com/meditation_bath" style="color: silver">«Банный клуб - по вторникам»</a></td>     <!-- Баня -->
-	<td>Вторник<br><a href="https://vk.com/meditation_bath">Третий этаж</a><br><span style="color: #990000">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
+	<td><a href="https://yandex.ru/maps/org/lotsmanskiye_bani_obshcheye_otdeleniye/1213221970/">Лоцманские бани</a><br><a href="https://vk.com/meditation_bath" class="text-muted">«Банный клуб - по вторникам»</a></td>     <!-- Баня -->
+	<td>Вторник<br><a href="https://vk.com/meditation_bath">Третий этаж</a><br><span class="text-danger">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
 	<td class="minus">300—1200₽</td>   <!-- Цена -->
 	<td class="minus">тесновато</td>       <!-- Много/мало народа -->
 	<td class="plus-plus">дровяная</td>        <!-- Печка -->
@@ -341,7 +337,7 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 
 <tr>
 	<td><a href="https://yandex.ru/maps/org/bani_na_yaroslavskom/1494046988">Ярославские бани</a></td>     <!-- Баня -->
-	<td>Вторник<br><a href="https://vk.com/yarbany">Банный клуб</a><br><span style="color: #990000">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
+	<td>Вторник<br><a href="https://vk.com/yarbany">Банный клуб</a><br><span class="text-danger">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
 	<td class="minus">800₽</td>   <!-- Цена -->
 	<td class="plus-plus">свободно</td>       <!-- Много/мало народа -->
 	<td class="minus">не дровяная</td>        <!-- Печка -->
@@ -366,7 +362,7 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 <tr>
 	<td><a href="https://yandex.ru/maps/org/primorskiye_bani/59885221710/">Приморские бани</a></td>     <!-- Баня -->
 	<td class="main-feature-silver">Будни<br><a href="http://www.primorskiebani.ru">Банный клуб</a>
-    <br><span style="color: #990000">Семейное&nbsp;отделение</td>             <!-- День/отделение -->
+    <br><span class="text-danger">Семейное&nbsp;отделение</td>             <!-- День/отделение -->
 	<td class="minus-minus">1000₽</td>   <!-- Цена -->
 	<td class="plus-plus">свободно</td>       <!-- Много/мало народа -->
 	<td class="minus">не дровяная</td>        <!-- Печка -->
@@ -619,7 +615,7 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 
 <tr>
 	<td><a href="https://yandex.ru/maps/org/akveliya/1096305121/">Банный клуб Аквелия</a></td>     <!-- Баня -->
-	<td>Круглосуточно<br><a href="http://www.aquelia-spb.ru/club/">Четвёртый этаж</a><br><span style="color: #990000">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
+	<td>Круглосуточно<br><a href="http://www.aquelia-spb.ru/club/">Четвёртый этаж</a><br><span class="text-danger">Общее&nbsp;отделение <nobr>мужчины/женщины</nobr></a></td>             <!-- День/отделение -->
 	<td class="minus-minus">3000₽</td>   <!-- Цена -->
 	<td class="plus">народа немного, но стеснённо</td>       <!-- Много/мало народа -->
 	<td class="minus">две электрических русских парных, одну из которых называют дровяной</td>        <!-- Печка -->
@@ -668,7 +664,7 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 <tr>
 	<th>Баня</th>
 	<th>Отделение</th>
-	<th>Цена<br><span style="font-size:70%">2 часа</span></th>
+	<th>Цена<br><span class="small">2 часа</span></th>
 	<th>Людность</th>
 	<th>Печка</th>
 	<th>Парилка</th>
@@ -762,12 +758,12 @@ div.extra-comments p { margin-top:0; text-indent: 2em;
 </table>
 
 
-<div style="margin: 16px 16px 16px 16px; zoom:1; " >
+<div class="m-3">
 
 <h2 style="font: normal 2em 'Times New Roman'; color: black;    display: block;">«Секретная банька в Псковской области», рецензия от Паши</h2>
 <p>Настоящий дровяной пар! А не то что у вас там.</p>
 
-<p style="text-align: center"><video
+<p class="text-center"><video
 poster="{{ page.i }}vid-baths-pskov.jpg"
 class="plyr-player"
 playsinline controls>
@@ -781,7 +777,7 @@ type="video/mp4" />
 <p>Конечно же, эта банька — по-своему потрясающая и незабываемая — не укладывается в формат таблички выше. Но не упомянуть её тут никак нельзя. VK: <a href="https://vk.com/openfest">openfest</a>, <a href="https://vk.com/event183646170">event183646170</a>, <a href="https://vk.com/smsh_ladoga2019">smsh_ladoga2019</a>.</p>
 
 
-<p><a href="https://www.instagram.com/p/B0mESk6IbNi/"><img style="max-width: 100%" src="{{ page.i }}B0mESk6IbNi.jpg"></a></p>
+<p><a href="https://www.instagram.com/p/B0mESk6IbNi/"><img class="img-fluid" src="{{ page.i }}B0mESk6IbNi.jpg"></a></p>
 
 <h2 style="font: normal 2em 'Times New Roman'; color: black;    display: block;">И ещё</h2>
 
@@ -791,16 +787,16 @@ type="video/mp4" />
      
             <p><b>Баня в Зеленогорске</b> vs <b>Баня в Кронштадте</b></p>
 
-            <p style="color: silver"><i>Цитата:</i></p>
+            <p class="text-muted"><i>Цитата:</i></p>
             <p>— да ну в анус этих пошлых деревенских пижонов с их тапочками перед парилкой и голыми жопами на скамейках. 😁</p>
             <p>Если соберешься 16-го в Кронштадт - я с тобой</p>
     
-            <p style="padding-top:2em"><b>Баня в Лисьем носу</b> vs <b>Баня в Кронштадте</b></p>
+            <p class="pt-4"><b>Баня в Лисьем носу</b> vs <b>Баня в Кронштадте</b></p>
 
-            <p style="color: silver"><i>Цитата:</i></p>
+            <p class="text-muted"><i>Цитата:</i></p>
             <p>— ты их купель видел? Воды Священного Ганга в Варанаси по сравнению с этим болотом - Альпийские родники!</p>
 
-            <p style="color: silver"><i>Цитата:</i></p>
+            <p class="text-muted"><i>Цитата:</i></p>
         <p>— Сосчитал 10 раз по десять, но не успокоится мне. Так вот, некоторые эстеты от бани, особенно преклонного возраста, да и некоторые другие, обожают рассуждать о прелестях дровяных печек и качестве сантехники, а при упоминании банных печей на газе делают "Фи" всем организмом. А между тем они забывают, что основной эффект от бани заключается в контрасте температур, и после парилки надо обязательно хорошо охладится, дабы сосуды и прочие заинтересованные товарищи сначала расширились, потом сузились, а потом пришли в нормальное состояние. Гимнастика-с. А если после парилки просто тухнуть в раздевалке, то это ни о чем. Душ и поливание из тазиков не канают. </p>
         <p>Какой вывод отсюда сделает существо, относящее себя к виду "человек разумный"? </p>
         <p>Правильно, Кронштадт</p>
@@ -874,11 +870,11 @@ type="video/mp4" />
 
           
 
-<p style="text-align: center;">И ещё ссылки по теме:
-    <div style="margin: 16px 16px 16px 16px; text-align: center; padding-bottom: 24px;">
+<p class="text-center">И ещё ссылки по теме:
+    <div class="m-3 text-center pb-4">
     <a href="http://www.the-village.ru/village/service-shopping/service-shopping/140385-bani"><img src="{{ page.i }}the-village.png"></a>
     
-    <a style="margin-left: 3em;" href="http://paperpaper.ru/photos/top-10-of-banya/"><img src="{{ page.i }}paperpaper.png"></a>
+    <a class="ms-5" href="http://paperpaper.ru/photos/top-10-of-banya/"><img src="{{ page.i }}paperpaper.png"></a>
     
 </div>
 </p>
