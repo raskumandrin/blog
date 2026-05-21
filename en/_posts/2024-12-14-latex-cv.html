@@ -1,20 +1,20 @@
 ---
 url: latex-cv
 title: Resume in LaTeX
-og_description: Why can LaTeX be more convenient than Word for creating a resume? I share my experience of switching, its advantages, a Docker solution for building, useful templates, and my own example.
+og_description: How I moved my resume from Word to LaTeX: a Docker file for building it, a link to templates, and my example.
 categories: work
 tags: [guide]
 js: [highlight]
 ---
 
-<p>In the past, creating a résumé in Word was the de-facto standard. You open the document, edit the content, export it to PDF, and send it out. For version control, you keep a separate Git repository and commit changes from time to time. Technically, this setup works.</p>
-<p>Over time, however, its limitations become clear. Formatting is difficult to control. Diffs make it hard to see what exactly changed. Updating contact details duplicated in different sections turns into unnecessary routine.</p>
-<p>Eventually, I switched to a different approach. I install LaTeX (preferably TeX Live). The résumé is written as plain text, with no binary files involved. Any editor works. I make a change, compile, and immediately see the updated PDF. Git tracks every detail because the sources are plain text. The header and contact info are stored in variables or commands, so editing in one place updates the entire document. The resulting PDF is stable, clean, and predictable — no floating tables or accidental layout shifts.</p>
-<p>You can, of course, continue using Word and exporting to PDF, but that often turns into a fight with formatting and attempts to maintain precise positioning, which frequently leads to subtle and hard-to-trace layout issues.</p>
+<p>My resume used to live in Word. A normal file: edit the text, export to PDF, send it. For the history of changes I had a separate Git repository, where I committed a new version from time to time.</p>
+<p>It was workable. But a Word file in Git is still basically a blob: the history of changes is not really visible.</p>
+<p>At some point it became easier to move everything to LaTeX. The source is plain text. Open it in an editor, edit, compile, get a PDF. Git shows a normal diff. Repeated pieces can be moved into commands, so I do not have to search for them by hand through the document.</p>
+<p>Not that this is the one correct way to do it. It just turned out to be calmer for a resume that has to be updated from time to time and still stay reasonably tidy.</p>
 	
 <h1>Docker file for working with LaTeX</h1>
 
-<p>To avoid installing LaTeX locally, you can use Docker. Here is an example of a Docker file:</p>
+<p>You do not have to install LaTeX locally. It can be built through Docker. This is the Docker file that worked for me:</p>
 
 <pre><code>FROM debian:buster-slim
 
@@ -29,34 +29,34 @@ WORKDIR /tmp</code></pre>
 
 
 
-<p>Building the image:</p>
+<p>Build the image:</p>
 
 
 <pre><code>docker build -t latex .</code></pre>
 
 
-<p>Building the document:</p>
+<p>Build the document:</p>
 
 <pre><code>docker run -v `pwd`:/tmp latex pdflatex cv.tex</code></pre>
 
-<p>As a result, a cv.pdf will appear in the same directory.</p>
+<p>After that, <code>cv.pdf</code> will appear next to the source file.</p>
 
 
 <p>Source: <a href="https://www.joshfinnie.com/blog/latex-through-docker/">joshfinnie.com/blog/latex-through-docker</a>.</p>
 
 <h1>Useful Resources</h1>
-<p>To get started with resumes in LaTeX, you can use ready-made templates. One of the best resources is:
+<p>There are many resume templates on Overleaf:
 	<a href="https://www.overleaf.com/gallery/tagged/cv">Overleaf Templates</a></p>
 
-<p>There, you can find many examples that are easy to adapt to your needs.</p>
+<p>I mostly looked there for the general structure: columns, headings, spacing, which packages people include. After that it still turns into fitting everything around your own text.</p>
 
 <h1>My Resume Template</h1>
 
-<p>Here is an example of what my resume, created in LaTeX, looks like:</p>
+<p>This is what I ended up with:</p>
 
 <div class="paper-sheet paper-sheet--image"><img src="{{ page.i }}cv2.jpg"></div>
 
-<p>And its source code:</p>
+<p>And the source:</p>
 
 {% raw %}<pre><code>
 % !TeX spellcheck = en_GB
